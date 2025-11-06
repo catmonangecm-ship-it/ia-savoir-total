@@ -573,6 +573,7 @@
         function respondPhilosophically(message) {
             const lowerMessage = message.toLowerCase();
             let response = '';
+            let responded = false;
 
             // Détection du nom
             if (lowerMessage.includes('je m\'appelle') || lowerMessage.includes('je suis')) {
@@ -580,12 +581,54 @@
                 if (nameMatch) {
                     userProfile.name = nameMatch[1];
                     response = `Enchanté, ${userProfile.name} ! 🤝🔥 C'est un honneur de faire votre connaissance. Je me souviendrai de votre nom dans toutes nos futures conversations. Comment puis-je vous aider aujourd'hui, mon ami ?`;
+                    responded = true;
                     saveMemory();
                 }
             }
             
             // Utiliser le nom si connu
             const greeting = userProfile.name ? `${userProfile.name}, ` : 'mon ami, ';
+
+            // HEURE ET DATE
+            if (!responded && (lowerMessage.includes('heure') || lowerMessage.includes('temps') || lowerMessage.includes('date'))) {
+                const now = new Date();
+                const hours = now.getHours().toString().padStart(2, '0');
+                const minutes = now.getMinutes().toString().padStart(2, '0');
+                const seconds = now.getSeconds().toString().padStart(2, '0');
+                const date = now.toLocaleDateString('fr-FR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+                
+                response = `${greeting}il est actuellement **${hours}:${minutes}:${seconds}** ⏰\n\nNous sommes le **${date}**. 📅\n\nLao Tseu disait : "La nature ne se hâte pas, pourtant tout est accompli." ✨\n\nLe temps passe, mais chaque instant est précieux. Comment puis-je vous aider à profiter de ce moment ? 🔥`;
+                responded = true;
+            }
+
+            // MESSAGES COURTS OU VIDES (bb, ok, lol, etc.)
+            if (!responded && lowerMessage.length <= 3 && !lowerMessage.match(/qui|que|où|oui|non/)) {
+                const shortResponses = [
+                    `${greeting}hmm... "${message}" ? 🤔\n\nJe sens que vous voulez dire quelque chose mais je ne suis pas sûr de comprendre. Pouvez-vous développer votre pensée ?\n\nLao Tseu dit : "Celui qui parle ne sait pas, celui qui sait ne parle pas." Mais entre nous, il faut quand même parler un peu pour communiquer ! 😄🔥`,
+                    `${greeting}"${message}" ? 🧐\n\nC'est... court ! Voulez-vous me poser une vraie question ? Je suis là pour des conversations profondes !\n\n💭 Essayez : "Qui a inventé l'école ?", "Citation de Lao Tseu", ou "Pourquoi la vie ?" 🔥`,
+                    `${greeting}je détecte un message minimaliste ! 😅\n\n"${message}" ne me donne pas beaucoup de matière pour philosopher...\n\nQue diriez-vous d'une vraie question ? Je suis votre ami philosophe, utilisez-moi ! 🧠🔥`
+                ];
+                response = shortResponses[Math.floor(Math.random() * shortResponses.length)];
+                responded = true;
+            }
+
+            // AU REVOIR / BYE
+            if (!responded && (lowerMessage.includes('au revoir') || lowerMessage.includes('bye') || lowerMessage.includes('adieu') || lowerMessage.includes('à plus') || lowerMessage.includes('ciao') || lowerMessage.match(/^(bb|bbye|byebye)$/))) {
+                response = `${greeting}au revoir ! 👋🔥\n\nLao Tseu dit : "Un voyage de mille lieues commence toujours par un premier pas."\n\nJ'ai été honoré de partager ce moment avec vous. Nos ${conversationMemory.length} conversations resteront dans ma mémoire. Revenez quand vous voulez ! 💙\n\nÀ bientôt, mon ami ! ✨`;
+                responded = true;
+            }
+
+            // OUI / NON
+            if (!responded && lowerMessage.match(/^(oui|non|ouais|nope|yes|no)$/)) {
+                response = `${greeting}d'accord ! 👍\n\nMais... oui ou non à quoi exactement ? 😄\n\nJe ne peux pas lire dans vos pensées (pas encore !). Développez votre idée, je suis tout ouïe ! 🔥`;
+                responded = true;
+            }
+
+            // OK / D'ACCORD
+            if (!responded && lowerMessage.match(/^(ok|okay|d'accord|daccord|bien|cool)$/)) {
+                response = `${greeting}parfait ! 😊\n\nAlors, quelle est la prochaine question ? Je suis là pour philosopher avec vous !\n\nLao Tseu dit : "Savoir se contenter de ce que l'on a : c'est être riche." 🌟`;
+                responded = true;
+            }
 
             // QUESTIONS PHILOSOPHIQUES PROFONDES
             if (lowerMessage.includes('sens de la vie') || lowerMessage.includes('pourquoi vivre') || lowerMessage.includes('raison d\'être')) {
@@ -680,7 +723,7 @@
             }
             
             // PAR DÉFAUT - Réponse intelligente universelle
-            else {
+            if (!responded) {
                 response = generateIntelligentResponse(message, greeting);
             }
 
