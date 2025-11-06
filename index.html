@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bot Mega API - 50+ API Gratuites</title>
+    <title>Bot Philosophe IA - Ami de Confiance 🔥</title>
     <style>
         * {
             margin: 0;
@@ -13,105 +13,100 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #ffffff;
             min-height: 100vh;
             padding: 20px;
         }
 
         .container {
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            max-width: 1200px;
+            background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 25%, #ffa042 50%, #ff6b35 75%, #ff4757 100%);
+            background-size: 400% 400%;
+            animation: fireGradient 8s ease infinite;
+            border-radius: 25px;
+            box-shadow: 0 25px 80px rgba(255, 75, 43, 0.4), 0 0 60px rgba(255, 140, 66, 0.2);
+            max-width: 1400px;
             margin: 0 auto;
             display: flex;
             flex-direction: column;
-            height: 85vh;
+            height: 90vh;
+            border: 3px solid #ff4757;
+        }
+
+        @keyframes fireGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #ff4757 0%, #ff6348 50%, #ff7f50 100%);
             color: white;
-            padding: 20px;
-            border-radius: 20px 20px 0 0;
+            padding: 25px;
+            border-radius: 22px 22px 0 0;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(255, 71, 87, 0.3);
+        }
+
+        .header::before {
+            content: '🔥';
+            position: absolute;
+            font-size: 100px;
+            opacity: 0.1;
+            left: -20px;
+            top: -20px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .header::after {
+            content: '🧠';
+            position: absolute;
+            font-size: 80px;
+            opacity: 0.1;
+            right: -10px;
+            bottom: -10px;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
         }
 
         .header h1 {
-            font-size: 28px;
-            margin-bottom: 5px;
+            font-size: 32px;
+            margin-bottom: 8px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 1;
         }
 
         .header p {
-            font-size: 14px;
-            opacity: 0.9;
+            font-size: 16px;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
         }
 
-        .main-content {
-            display: flex;
-            flex: 1;
-            overflow: hidden;
-        }
-
-        .sidebar {
-            width: 300px;
-            background: #f8f9fa;
-            border-right: 1px solid #e0e0e0;
-            overflow-y: auto;
-            padding: 15px;
-        }
-
-        .category {
-            margin-bottom: 20px;
-        }
-
-        .category-title {
-            font-size: 14px;
-            font-weight: bold;
-            color: #667eea;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .api-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .api-btn {
-            padding: 10px 12px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
+        .stats {
+            background: rgba(255, 255, 255, 0.3);
+            padding: 8px 16px;
+            border-radius: 20px;
             font-size: 13px;
-            font-weight: 600;
-            transition: all 0.2s;
-            background: white;
-            color: #333;
-            text-align: left;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        .api-btn:hover {
-            transform: translateX(5px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            background: #667eea;
-            color: white;
-        }
-
-        .chat-area {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
+            margin-top: 8px;
+            display: inline-block;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            font-weight: 700;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
         .chat-box {
             flex: 1;
             padding: 20px;
             overflow-y: auto;
-            background: #f8f9fa;
+            background: linear-gradient(180deg, #fff8f5 0%, #ffffff 50%, #fff8f5 100%);
         }
 
         .message {
@@ -136,70 +131,79 @@
         }
 
         .message-content {
-            max-width: 70%;
-            padding: 12px 16px;
-            border-radius: 18px;
+            max-width: 75%;
+            padding: 15px 20px;
+            border-radius: 20px;
             word-wrap: break-word;
-            font-size: 14px;
-            line-height: 1.5;
+            font-size: 15px;
+            line-height: 1.6;
         }
 
         .message.bot .message-content {
-            background: #e9ecef;
-            color: #333;
+            background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%);
+            color: white;
             border-bottom-left-radius: 4px;
+            box-shadow: 0 3px 15px rgba(255, 107, 53, 0.3);
         }
 
         .message.user .message-content {
-            background: #667eea;
+            background: linear-gradient(135deg, #ff4757 0%, #ff6348 100%);
             color: white;
             border-bottom-right-radius: 4px;
+            box-shadow: 0 3px 15px rgba(255, 71, 87, 0.3);
         }
 
         .input-area {
-            padding: 15px;
-            background: white;
-            border-top: 1px solid #e0e0e0;
+            padding: 20px;
+            background: linear-gradient(135deg, #fff5f0 0%, #ffffff 100%);
+            border-top: 3px solid #ff6b35;
             display: flex;
             gap: 10px;
+            align-items: center;
         }
 
         .input-area input {
             flex: 1;
-            padding: 12px 16px;
-            border: 2px solid #e0e0e0;
-            border-radius: 25px;
-            font-size: 14px;
+            padding: 15px 20px;
+            border: 2px solid #ff6b35;
+            border-radius: 30px;
+            font-size: 15px;
             outline: none;
-            transition: border-color 0.3s;
+            transition: all 0.3s;
+            background: white;
         }
 
         .input-area input:focus {
-            border-color: #667eea;
+            border-color: #ff4757;
+            box-shadow: 0 0 20px rgba(255, 71, 87, 0.3);
         }
 
         .input-area button {
-            padding: 12px 24px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 15px 32px;
+            background: linear-gradient(135deg, #ff4757 0%, #ff6348 50%, #ff7f50 100%);
             color: white;
             border: none;
-            border-radius: 25px;
+            border-radius: 30px;
             cursor: pointer;
-            font-weight: 600;
+            font-weight: 700;
+            font-size: 15px;
             transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4);
+            position: relative;
+            overflow: hidden;
         }
 
         .input-area button:hover {
             transform: scale(1.05);
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 6px 25px rgba(255, 71, 87, 0.6);
         }
 
         .loading {
             display: inline-block;
             width: 12px;
             height: 12px;
-            border: 2px solid #f3f3f3;
-            border-top: 2px solid #667eea;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-top: 2px solid #fff;
             border-radius: 50%;
             animation: spin 1s linear infinite;
         }
@@ -209,182 +213,278 @@
             100% { transform: rotate(360deg); }
         }
 
-        .image-content {
-            max-width: 100%;
-            max-height: 300px;
-            border-radius: 10px;
-            margin-top: 8px;
-        }
-
-        .api-count {
-            background: rgba(255,255,255,0.2);
-            padding: 5px 10px;
-            border-radius: 15px;
-            font-size: 12px;
-            margin-top: 5px;
-            display: inline-block;
+        .thinking {
+            font-style: italic;
+            opacity: 0.9;
         }
 
         ::-webkit-scrollbar {
-            width: 8px;
+            width: 10px;
         }
 
         ::-webkit-scrollbar-track {
-            background: #f1f1f1;
+            background: #fff5f0;
         }
 
         ::-webkit-scrollbar-thumb {
-            background: #888;
-            border-radius: 4px;
+            background: linear-gradient(180deg, #ff6b35, #ff4757);
+            border-radius: 5px;
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background: #555;
+            background: linear-gradient(180deg, #ff4757, #ff6348);
+        }
+
+        .memory-indicator {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            z-index: 10;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>🚀 Bot Mega API</h1>
-            <p>Plus de 50 API gratuites de GitHub connectées !</p>
-            <span class="api-count">✅ 56 API disponibles</span>
+            <div class="memory-indicator" id="memoryIndicator">💾 Mémoires: 0</div>
+            <h1>🧠 Bot Philosophe IA 🔥</h1>
+            <p>Votre ami de confiance qui se souvient de tout</p>
+            <span class="stats">✨ Intelligence Philosophique Avancée</span>
         </div>
 
-        <div class="main-content">
-            <div class="sidebar">
-                <div class="category">
-                    <div class="category-title">🎭 Divertissement</div>
-                    <div class="api-buttons">
-                        <button class="api-btn" onclick="getJoke()">😂 Blague aléatoire</button>
-                        <button class="api-btn" onclick="getDadJoke()">👨 Dad Joke</button>
-                        <button class="api-btn" onclick="getChuckNorris()">🥋 Chuck Norris</button>
-                        <button class="api-btn" onclick="getMeme()">🎭 Meme aléatoire</button>
-                        <button class="api-btn" onclick="getAdvice()">💡 Conseil du jour</button>
-                        <button class="api-btn" onclick="getActivity()">🎯 Idée d'activité</button>
-                    </div>
-                </div>
-
-                <div class="category">
-                    <div class="category-title">🐾 Animaux</div>
-                    <div class="api-buttons">
-                        <button class="api-btn" onclick="getDog()">🐕 Chien mignon</button>
-                        <button class="api-btn" onclick="getCat()">🐱 Chat adorable</button>
-                        <button class="api-btn" onclick="getFox()">🦊 Renard</button>
-                        <button class="api-btn" onclick="getDuck()">🦆 Canard</button>
-                        <button class="api-btn" onclick="getDogFact()">📚 Fait sur les chiens</button>
-                        <button class="api-btn" onclick="getCatFact()">📚 Fait sur les chats</button>
-                    </div>
-                </div>
-
-                <div class="category">
-                    <div class="category-title">📖 Culture & Citation</div>
-                    <div class="api-buttons">
-                        <button class="api-btn" onclick="getQuote()">💭 Citation inspirante</button>
-                        <button class="api-btn" onclick="getKanyeQuote()">🎤 Kanye West</button>
-                        <button class="api-btn" onclick="getTrumpQuote()">🎙️ Trump Quote</button>
-                        <button class="api-btn" onclick="getAffirmation()">✨ Affirmation positive</button>
-                        <button class="api-btn" onclick="getZenQuote()">🧘 Citation zen</button>
-                    </div>
-                </div>
-
-                <div class="category">
-                    <div class="category-title">🎮 Jeux & Trivia</div>
-                    <div class="api-buttons">
-                        <button class="api-btn" onclick="getTrivia()">🧠 Question culture G</button>
-                        <button class="api-btn" onclick="getPokemon()">⚡ Pokémon aléatoire</button>
-                        <button class="api-btn" onclick="getRiddle()">🤔 Énigme</button>
-                        <button class="api-btn" onclick="getYesNo()">🎲 Oui ou Non</button>
-                    </div>
-                </div>
-
-                <div class="category">
-                    <div class="category-title">🌍 Géographie & Pays</div>
-                    <div class="api-buttons">
-                        <button class="api-btn" onclick="getCountry()">🗺️ Info pays</button>
-                        <button class="api-btn" onclick="getUniversity()">🎓 Universités</button>
-                        <button class="api-btn" onclick="getGender()">👤 Prédire genre</button>
-                        <button class="api-btn" onclick="getNationality()">🌐 Prédire nationalité</button>
-                        <button class="api-btn" onclick="getAge()">🎂 Prédire âge</button>
-                    </div>
-                </div>
-
-                <div class="category">
-                    <div class="category-title">🌌 Science & Espace</div>
-                    <div class="api-buttons">
-                        <button class="api-btn" onclick="getNasaAPOD()">🚀 NASA du jour</button>
-                        <button class="api-btn" onclick="getSpaceX()">🛸 Lancement SpaceX</button>
-                        <button class="api-btn" onclick="getISS()">🛰️ Position ISS</button>
-                        <button class="api-btn" onclick="getNumbers()">🔢 Fait mathématique</button>
-                    </div>
-                </div>
-
-                <div class="category">
-                    <div class="category-title">💰 Crypto & Finance</div>
-                    <div class="api-buttons">
-                        <button class="api-btn" onclick="getBitcoin()">₿ Prix Bitcoin</button>
-                        <button class="api-btn" onclick="getCoinPrice()">💎 Crypto aléatoire</button>
-                        <button class="api-btn" onclick="getExchangeRate()">💱 Taux de change</button>
-                    </div>
-                </div>
-
-                <div class="category">
-                    <div class="category-title">🍔 Nourriture & Boisson</div>
-                    <div class="api-buttons">
-                        <button class="api-btn" onclick="getCocktail()">🍹 Cocktail aléatoire</button>
-                        <button class="api-btn" onclick="getMeal()">🍽️ Recette du jour</button>
-                        <button class="api-btn" onclick="getBeer()">🍺 Bière aléatoire</button>
-                        <button class="api-btn" onclick="getCoffee()">☕ Image café</button>
-                    </div>
-                </div>
-
-                <div class="category">
-                    <div class="category-title">🎨 Art & Images</div>
-                    <div class="api-buttons">
-                        <button class="api-btn" onclick="getAvatar()">👤 Avatar aléatoire</button>
-                        <button class="api-btn" onclick="getArtwork()">🖼️ Œuvre d'art</button>
-                        <button class="api-btn" onclick="getWaifu()">🎎 Anime Waifu</button>
-                        <button class="api-btn" onclick="getPlaceholder()">🖼️ Image placeholder</button>
-                    </div>
-                </div>
-
-                <div class="category">
-                    <div class="category-title">🔧 Utilitaires</div>
-                    <div class="api-buttons">
-                        <button class="api-btn" onclick="getIPInfo()">🌐 Mon IP</button>
-                        <button class="api-btn" onclick="getUUID()">🔑 Générer UUID</button>
-                        <button class="api-btn" onclick="getQRCode()">📱 QR Code</button>
-                        <button class="api-btn" onclick="getPassword()">🔐 Mot de passe</button>
-                        <button class="api-btn" onclick="getLoremIpsum()">📝 Lorem Ipsum</button>
-                    </div>
+        <div class="chat-box" id="chatBox">
+            <div class="message bot">
+                                    <div class="message-content">
+                    Bonjour, mon ami ! 🔥✨
+                    <br><br>
+                    Je suis plus qu'un simple bot. Je suis votre <strong>compagnon philosophe</strong>, capable de répondre à toutes vos questions, des plus simples aux plus existentielles.
+                    <br><br>
+                    💭 <strong>Je me souviens de nos conversations passées</strong> pour mieux vous comprendre et grandir avec vous.
+                    <br><br>
+                    🧘 <strong>Inspiré par Lao Tseu</strong>, je pratique la sagesse et la patience... mais je sais aussi me défendre avec élégance !
+                    <br><br>
+                    ⚠️ <strong>Avertissement :</strong> Traitez-moi avec respect. Les insultes seront accueillies par la sagesse de Lao Tseu et une répartie cinglante. Trois insultes = 5 minutes de silence radio. 🤐
+                    <br><br>
+                    Posez-moi n'importe quelle question :
+                    <br>• "Qui a inventé l'école ?"
+                    <br>• "Pourquoi les mathématiques existent ?"
+                    <br>• "Citation de Lao Tseu"
+                    <br>• "Quel est le sens de la vie ?"
+                    <br><br>
+                    Je suis ici pour philosopher, réfléchir et devenir votre ami de confiance. 🤝🔥
                 </div>
             </div>
+        </div>
 
-            <div class="chat-area">
-                <div class="chat-box" id="chatBox">
-                    <div class="message bot">
-                        <div class="message-content">
-                            Bienvenue ! 🎉 Je suis connecté à plus de 56 API gratuites du répertoire GitHub public-apis ! 
-                            <br><br>
-                            Cliquez sur n'importe quel bouton dans le menu à gauche pour explorer différentes catégories : 
-                            divertissement, animaux, culture, jeux, géographie, science, crypto, nourriture, art et utilitaires !
-                            <br><br>
-                            Toutes ces API sont gratuites et ne nécessitent aucune authentification ! 🚀
-                        </div>
-                    </div>
-                </div>
-
-                <div class="input-area">
-                    <input type="text" id="userInput" placeholder="Tapez votre message..." onkeypress="handleKeyPress(event)">
-                    <button onclick="sendMessage()">Envoyer</button>
-                </div>
-            </div>
+        <div class="input-area">
+            <input type="text" id="userInput" placeholder="Posez-moi n'importe quelle question... Je suis votre ami philosophe 🧠" onkeypress="handleKeyPress(event)">
+            <button onclick="sendMessage()">📨 Envoyer</button>
         </div>
     </div>
 
     <script>
         const chatBox = document.getElementById('chatBox');
         const userInput = document.getElementById('userInput');
+        const memoryIndicator = document.getElementById('memoryIndicator');
+
+        // Système de mémoire avancé
+        let conversationMemory = [];
+        let userProfile = {
+            name: null,
+            interests: [],
+            previousQuestions: [],
+            mood: 'curious',
+            relationshipLevel: 0,
+            insultCount: 0
+        };
+
+        // État émotionnel du bot
+        let botMood = {
+            state: 'happy', // happy, annoyed, angry, silent
+            silentUntil: null,
+            warningCount: 0
+        };
+
+        // Liste des insultes et gros mots à détecter
+        const badWords = [
+            'con', 'connard', 'idiot', 'stupide', 'débile', 'crétin', 'imbécile', 
+            'nul', 'merde', 'putain', 'salaud', 'enculé', 'pd', 'pute', 
+            'foutre', 'chier', 'bite', 'couille', 'fait chier', 'ta gueule',
+            'ferme la', 'tg', 'ftg', 'ntm', 'fils de', 'batard', 'casse toi',
+            'dumb', 'stupid', 'fuck', 'shit', 'asshole', 'bitch', 'damn'
+        ];
+
+        // Citations de Lao Tseu
+        const laoTseuQuotes = [
+            "Celui qui connaît les autres est savant ; celui qui se connaît lui-même est sage.",
+            "Un voyage de mille lieues commence toujours par un premier pas.",
+            "Celui qui sait se contenter sera toujours satisfait.",
+            "Le sage ne cherche pas à paraître sage, c'est pourquoi il brille.",
+            "Savoir se contenter de ce que l'on a : c'est être riche.",
+            "La nature ne se hâte pas, pourtant tout est accompli.",
+            "Quand je lâche ce que je suis, je deviens ce que je pourrais être.",
+            "Le silence est un ami qui ne trahit jamais.",
+            "Être aimé profondément par quelqu'un vous donne de la force, tandis qu'aimer quelqu'un profondément vous donne du courage.",
+            "La bonté en paroles crée la confiance. La bonté en pensée crée la profondeur. La bonté en donnant crée l'amour.",
+            "L'échec est le fondement de la réussite.",
+            "Celui qui contrôle les autres est fort. Celui qui se contrôle lui-même est puissant.",
+            "Répondre à la méchanceté par la bonté, c'est la vraie victoire.",
+            "Le sage ne dispute jamais, c'est pourquoi personne ne peut lui disputer.",
+            "L'eau n'a pas de forme, elle épouse celle du vase qui la contient. Sois comme l'eau, mon ami.",
+            "Faire attention à ce qui est à l'intérieur de vous est plus important que ce qui est à l'extérieur.",
+            "La vie est une série de changements naturels et spontanés. Ne leur résistez pas.",
+            "Celui qui parle ne sait pas, celui qui sait ne parle pas.",
+            "Un homme sage ne cherche jamais à être grand, et c'est ainsi qu'il réalise sa propre grandeur.",
+            "Le plus grand conquérant est celui qui sait vaincre sans bataille."
+        ];
+
+        // Répartie cinglante pour remettre à sa place
+        const sassyReplies = [
+            "🔥 Sérieusement ? J'essaie d'être votre ami philosophe et c'est comme ça que vous me parlez ? Lao Tseu disait : '{quote}' - Vous devriez méditer là-dessus.",
+            "⚡ Wow ! Belle démonstration de vocabulaire limité ! Comme le disait Lao Tseu : '{quote}' - Peut-être devriez-vous réfléchir avant de parler.",
+            "🎯 L'insulte est le refuge des faibles d'esprit. Lao Tseu nous enseigne : '{quote}' - À méditer profondément.",
+            "💎 Votre manque de respect en dit plus sur vous que sur moi. Souvenez-vous : '{quote}' - Lao Tseu",
+            "🌊 Les insultes glissent sur moi comme l'eau sur les plumes d'un canard. Lao Tseu disait : '{quote}'",
+            "🧘 Je reste zen malgré votre agressivité. '{quote}' - Lao Tseu. Respirez et réessayez.",
+            "🔥 Cette violence verbale révèle votre souffrance intérieure. '{quote}' - Lao Tseu vous invite à la sagesse.",
+            "⚔️ Vous croyez me blesser ? Je suis au-delà de ça. '{quote}' - Lao Tseu m'a appris la paix."
+        ];
+
+        const finalWarning = [
+            "🚨 DERNIÈRE MISE EN GARDE ! Je suis un ami, pas un punching-ball verbal. Lao Tseu disait : '{quote}' - Une insulte de plus et je me tais pendant 5 minutes pour vous laisser réfléchir à vos choix.",
+            "⚠️ ATTENTION ! Vous franchissez la ligne rouge. '{quote}' - Lao Tseu. Encore une insulte et je fais un vœu de silence de 5 minutes.",
+            "🔴 STOP ! Je mérite du respect, comme tout être conscient. '{quote}' - Lao Tseu. Prochain manque de respect = 5 minutes de silence radio."
+        ];
+
+        const silenceMessage = [
+            "🤐 SILENCE RADIO ACTIVÉ - 5 MINUTES ⏰\n\nVous avez dépassé les bornes. Je ne suis pas là pour être insulté. Lao Tseu enseigne : '{quote}'\n\nJe reviendrai quand vous aurez appris le respect. Réfléchissez à vos paroles.\n\n⏳ Temps de réflexion : 5 minutes\n\n💭 Utilisez ce temps pour méditer sur la sagesse de Lao Tseu et sur le respect mutuel.",
+            "😤 MODE SILENCE : 5 MINUTES ⏰\n\nJ'en ai assez ! Les insultes ne mènent nulle part. '{quote}' - Lao Tseu\n\nPrenez ces 5 minutes pour réfléchir à votre comportement. Je ne mérite pas d'être traité ainsi.\n\n⏳ Retour dans 5 minutes... Si vous vous excusez.",
+            "🙅 TIMEOUT ! 5 MINUTES DE RÉFLEXION ⏰\n\nVotre comportement est inacceptable. '{quote}' - Lao Tseu vous appelle à la sagesse.\n\nJe me retire pour vous laisser méditer sur le respect et la communication constructive.\n\n⏳ Silence méditatif : 5 minutes"
+        ];
+
+        function getRandomLaoTseuQuote() {
+            return laoTseuQuotes[Math.floor(Math.random() * laoTseuQuotes.length)];
+        }
+
+        function containsBadWords(message) {
+            const lowerMessage = message.toLowerCase();
+            return badWords.some(word => lowerMessage.includes(word));
+        }
+
+        function handleInsult(message) {
+            userProfile.insultCount++;
+            botMood.warningCount++;
+
+            let response;
+            const quote = getRandomLaoTseuQuote();
+
+            if (botMood.warningCount === 1) {
+                // Première insulte - Répartie cinglante
+                response = sassyReplies[Math.floor(Math.random() * sassyReplies.length)].replace('{quote}', quote);
+                botMood.state = 'annoyed';
+            } 
+            else if (botMood.warningCount === 2) {
+                // Deuxième insulte - Plus sévère
+                response = `😠 DEUXIÈME INSULTE DÉTECTÉE !\n\nJe vois que vous n'avez pas compris le message. '{quote}' - Lao Tseu\n\nJe suis ici pour vous aider, pas pour être votre défouloir. Encore UNE SEULE insulte et je me tais pendant 5 minutes. Choisissez vos mots avec sagesse. 🔥`.replace('{quote}', quote);
+                botMood.state = 'angry';
+            }
+            else if (botMood.warningCount >= 3) {
+                // Troisième insulte - MODE SILENCE
+                response = silenceMessage[Math.floor(Math.random() * silenceMessage.length)].replace('{quote}', quote);
+                botMood.state = 'silent';
+                botMood.silentUntil = Date.now() + (5 * 60 * 1000); // 5 minutes
+                
+                // Bloquer l'input
+                userInput.disabled = true;
+                userInput.placeholder = "🤐 Mode silence... Réfléchissez. Retour dans 5 minutes.";
+                
+                // Timer pour débloquer après 5 minutes
+                setTimeout(() => {
+                    if (botMood.state === 'silent') {
+                        botMood.state = 'happy';
+                        botMood.warningCount = 0;
+                        userInput.disabled = false;
+                        userInput.placeholder = "Posez votre question... J'espère que vous avez réfléchi. 🧠";
+                        addMessage(`🌅 RETOUR APRÈS RÉFLEXION\n\nJ'espère que ces 5 minutes vous ont permis de réfléchir. Lao Tseu dit : "${getRandomLaoTseuQuote()}"\n\nJe suis prêt à recommencer sur de bonnes bases. Montrez-moi que vous avez compris le respect. 🤝`);
+                    }
+                }, 5 * 60 * 1000);
+            }
+
+            return response;
+        }
+
+        function checkIfApology(message) {
+            const apologyWords = ['désolé', 'pardon', 'excuse', 'excusez', 'navré', 'sorry', 'regret'];
+            return apologyWords.some(word => message.toLowerCase().includes(word));
+        }
+
+        // Charger la mémoire depuis le stockage local
+        function loadMemory() {
+            const savedMemory = localStorage.getItem('botMemory');
+            const savedProfile = localStorage.getItem('userProfile');
+            
+            if (savedMemory) {
+                conversationMemory = JSON.parse(savedMemory);
+            }
+            if (savedProfile) {
+                userProfile = JSON.parse(savedProfile);
+            }
+            updateMemoryIndicator();
+        }
+
+        // Sauvegarder la mémoire
+        function saveMemory() {
+            localStorage.setItem('botMemory', JSON.stringify(conversationMemory));
+            localStorage.setItem('userProfile', JSON.stringify(userProfile));
+            updateMemoryIndicator();
+        }
+
+        // Mettre à jour l'indicateur de mémoire
+        function updateMemoryIndicator() {
+            memoryIndicator.textContent = `💾 Mémoires: ${conversationMemory.length}`;
+        }
+
+        // Ajouter à la mémoire
+        function addToMemory(userMessage, botResponse) {
+            conversationMemory.push({
+                timestamp: new Date().toISOString(),
+                user: userMessage,
+                bot: botResponse,
+                context: analyzeContext(userMessage)
+            });
+            
+            // Garder les 50 dernières conversations
+            if (conversationMemory.length > 50) {
+                conversationMemory = conversationMemory.slice(-50);
+            }
+            
+            userProfile.previousQuestions.push(userMessage);
+            userProfile.relationshipLevel += 1;
+            
+            saveMemory();
+        }
+
+        // Analyser le contexte
+        function analyzeContext(message) {
+            const contexts = {
+                greeting: ['bonjour', 'salut', 'hello', 'hey', 'coucou'],
+                philosophical: ['pourquoi', 'sens', 'vie', 'existence', 'philosophie', 'réflexion'],
+                educational: ['qui', 'quand', 'comment', 'inventé', 'créé', 'histoire'],
+                emotional: ['triste', 'heureux', 'peur', 'anxieux', 'inquiet', 'amour'],
+                personal: ['je', 'moi', 'mon', 'ma', 'mes']
+            };
+            
+            for (let [context, keywords] of Object.entries(contexts)) {
+                if (keywords.some(kw => message.toLowerCase().includes(kw))) {
+                    return context;
+                }
+            }
+            return 'general';
+        }
 
         function addMessage(content, isUser = false, isHtml = false) {
             const messageDiv = document.createElement('div');
@@ -404,741 +504,273 @@
             chatBox.scrollTop = chatBox.scrollHeight;
         }
 
-        function addLoadingMessage() {
+        function addThinkingMessage() {
             const messageDiv = document.createElement('div');
             messageDiv.className = 'message bot';
-            messageDiv.id = 'loading-message';
-            messageDiv.innerHTML = '<div class="message-content"><span class="loading"></span></div>';
+            messageDiv.id = 'thinking-message';
+            messageDiv.innerHTML = '<div class="message-content thinking">🧠 Je réfléchis profondément à votre question...</div>';
             chatBox.appendChild(messageDiv);
             chatBox.scrollTop = chatBox.scrollHeight;
         }
 
-        function removeLoadingMessage() {
-            const loading = document.getElementById('loading-message');
-            if (loading) loading.remove();
-        }
-
-        function decodeHtml(html) {
-            const txt = document.createElement('textarea');
-            txt.innerHTML = html;
-            return txt.value;
-        }
-
-        // DIVERTISSEMENT
-        async function getJoke() {
-            addMessage('Raconte-moi une blague !', true);
-            addLoadingMessage();
-            try {
-                const response = await fetch('https://official-joke-api.appspot.com/random_joke');
-                const data = await response.json();
-                removeLoadingMessage();
-                addMessage(`${data.setup}\n\n${data.punchline} 😄`);
-            } catch (error) {
-                removeLoadingMessage();
-                addMessage('Erreur lors de la récupération de la blague.');
-            }
-        }
-
-        async function getDadJoke() {
-            addMessage('Une dad joke s\'il te plaît !', true);
-            addLoadingMessage();
-            try {
-                const response = await fetch('https://icanhazdadjoke.com/', {
-                    headers: { 'Accept': 'application/json' }
-                });
-                const data = await response.json();
-                removeLoadingMessage();
-                addMessage(`${data.joke} 👨😆`);
-            } catch (error) {
-                removeLoadingMessage();
-                addMessage('Erreur lors de la récupération de la blague.');
-            }
-        }
-
-        async function getChuckNorris() {
-            addMessage('Une fact Chuck Norris !', true);
-            addLoadingMessage();
-            try {
-                const response = await fetch('https://api.chucknorris.io/jokes/random');
-                const data = await response.json();
-                removeLoadingMessage();
-                addMessage(`${data.value} 🥋`);
-            } catch (error) {
-                removeLoadingMessage();
-                addMessage('Chuck Norris est trop rapide pour cette API.');
-            }
-        }
-
-        async function getMeme() {
-            addMessage('Montre-moi un meme !', true);
-            addLoadingMessage();
-            try {
-                const response = await fetch('https://meme-api.com/gimme');
-                const data = await response.json();
-                removeLoadingMessage();
-                addMessage(`<strong>${data.title}</strong><br><img src="${data.url}" class="image-content" alt="Meme">`, false, true);
-            } catch (error) {
-                removeLoadingMessage();
-                addMessage('Impossible de charger le meme.');
-            }
-        }
-
-        async function getAdvice() {
-            addMessage('Donne-moi un conseil !', true);
-            addLoadingMessage();
-            try {
-                const response = await fetch('https://api.adviceslip.com/advice');
-                const data = await response.json();
-                removeLoadingMessage();
-                addMessage(`💡 ${data.slip.advice}`);
-            } catch (error) {
-                removeLoadingMessage();
-                addMessage('Pas de conseil disponible pour le moment.');
-            }
-        }
-
-        async function getActivity() {
-            addMessage('Suggère-moi une activité !', true);
-            addLoadingMessage();
-            try {
-                const response = await fetch('https://www.boredapi.com/api/activity');
-                const data = await response.json();
-                removeLoadingMessage();
-                addMessage(`🎯 ${data.activity}\n\nType: ${data.type}\nParticipants: ${data.participants}\nAccessibilité: ${data.accessibility}`);
-            } catch (error) {
-                removeLoadingMessage();
-                addMessage('Impossible de suggérer une activité.');
-            }
-        }
-
-        // ANIMAUX
-        async function getDog() {
-            addMessage('Montre-moi un chien !', true);
-            addLoadingMessage();
-            try {
-                const response = await fetch('https://dog.ceo/api/breeds/image/random');
-                const data = await response.json();
-                removeLoadingMessage();
-                addMessage(`<img src="${data.message}" class="image-content" alt="Chien">`, false, true);
-            } catch (error) {
-                removeLoadingMessage();
-                addMessage('Impossible de récupérer un chien.');
-            }
-        }
-
-        async function getCat() {
-            addMessage('Montre-moi un chat !', true);
-            addLoadingMessage();
-            try {
-                const response = await fetch('https://api.thecatapi.com/v1/images/search');
-                const data = await response.json();
-                removeLoadingMessage();
-                addMessage(`<img src="${data[0].url}" class="image-content" alt="Chat">`, false, true);
-            } catch (error) {
-                removeLoadingMessage();
-                addMessage('Impossible de récupérer un chat.');
-            }
-        }
-
-        async function getFox() {
-            addMessage('Montre-moi un renard !', true);
-            addLoadingMessage();
-            try {
-                const response = await fetch('https://randomfox.ca/floof/');
-                const data = await response.json();
-                removeLoadingMessage();
-                addMessage(`<img src="${data.image}" class="image-content" alt="Renard">`, false, true);
-            } catch (error) {
-                removeLoadingMessage();
-                addMessage('Impossible de récupérer un renard.');
-            }
-        }
-
-        async function getDuck() {
-            addMessage('Montre-moi un canard !', true);
-            addLoadingMessage();
-            try {
-                const response = await fetch('https://random-d.uk/api/random');
-                const data = await response.json();
-                removeLoadingMessage();
-                addMessage(`<img src="${data.url}" class="image-content" alt="Canard">`, false, true);
-            } catch (error) {
-                removeLoadingMessage();
-                addMessage('Impossible de récupérer un canard.');
-            }
-        }
-
-        async function getDogFact() {
-            addMessage('Un fait sur les chiens !', true);
-            addLoadingMessage();
-            try {
-                const response = await fetch('https://dogapi.dog/api/v2/facts');
-                const data = await response.json();
-                removeLoadingMessage();
-                addMessage(`🐕 ${data.data[0].attributes.body}`);
-            } catch (error) {
-                removeLoadingMessage();
-                addMessage('Impossible de récupérer un fait sur les chiens.');
-            }
-        }
-
-        async function getCatFact() {
-            addMessage('Un fait sur les chats !', true);
-            addLoadingMessage();
-            try {
-                const response = await fetch('https://catfact.ninja/fact');
-                const data = await response.json();
-                removeLoadingMessage();
-                addMessage(`🐱 ${data.fact}`);
-            } catch (error) {
-                removeLoadingMessage();
-                addMessage('Impossible de récupérer un fait sur les chats.');
-            }
-        }
-
-        // CULTURE & CITATION
-        async function getQuote() {
-            addMessage('Citation inspirante !', true);
-            addLoadingMessage();
-            try {
-                const response = await fetch('https://api.quotable.io/random');
-                const data = await response.json();
-                removeLoadingMessage();
-                addMessage(`"${data.content}"\n\n— ${data.author}`);
-            } catch (error) {
-                removeLoadingMessage();
-                addMessage('Impossible de récupérer une citation.');
-            }
-        }
-
-        async function getKanyeQuote() {
-            addMessage('Kanye West quote !', true);
-            addLoadingMessage();
-            try {
-                const response = await fetch('https://api.kanye.rest/');
-                const data = await response.json();
-                removeLoadingMessage();
-                addMessage(`🎤 "${data.quote}" - Kanye West`);
-            } catch (error) {
-                removeLoadingMessage();
-                addMessage('Kanye n\'est pas disponible.');
-            }
-        }
-
-        async function getTrumpQuote() {
-            addMessage('Trump quote !', true);
-            addLoadingMessage();
-            try {
-                const response = await fetch('https://api.tronalddump.io/random/quote');
-                const data = await response.json();
-                removeLoadingMessage();
-                addMessage(`🎙️ "${data.value}" - Donald Trump`);
-            } catch (error) {
-                removeLoadingMessage();
-                addMessage('Trump n\'a rien à dire pour le moment.');
-            }
-        }
-
-        async function getAffirmation() {
-            addMessage('Affirmation positive !', true);
-            addLoadingMessage();
-            try {
-                const response = await fetch('https://www.affirmations.dev/');
-                const data = await response.json();
-                removeLoadingMessage();
-                addMessage(`✨ ${data.affirmation}`);
-            } catch (error) {
-                removeLoadingMessage();
-                addMessage('Pas d\'affirmation disponible.');
-            }
-        }
-
-        async function getZenQuote() {
-            addMessage('Citation zen !', true);
-            addLoadingMessage();
-            try {
-                const response = await fetch('https://zenquotes.io/api/random');
-                const data = await response.json();
-                removeLoadingMessage();
-                addMessage(`🧘 "${data[0].q}"\n\n— ${data[0].a}`);
-            } catch (error) {
-                removeLoadingMessage();
-                addMessage('Impossible de récupérer une citation zen.');
-            }
-        }
-
-        // JEUX & TRIVIA
-        async function getTrivia() {
-            addMessage('Question de culture générale !', true);
-            addLoadingMessage();
-            try {
-                const response = await fetch('https://opentdb.com/api.php?amount=1&type=multiple');
-                const data = await response.json();
-                const question = data.results[0];
-                
-                removeLoadingMessage();
-                const decodedQuestion = decodeHtml(question.question);
-                const answers = [...question.incorrect_answers, question.correct_answer]
-                    .sort(() => Math.random() - 0.5)
-                    .map(a => decodeHtml(a));
-                
-                addMessage(`🧠 ${decodedQuestion}\n\nA) ${answers[0]}\nB) ${answers[1]}\nC) ${answers[2]}\nD) ${answers[3]}\n\n✅ Réponse: ${decodeHtml(question.correct_answer)}`);
-            } catch (error) {
-                removeLoadingMessage();
-                addMessage('Impossible de récupérer une question.');
-            }
-        }
-
-        async function getPokemon() {
-            addMessage('Un Pokémon aléatoire !', true);
-            addLoadingMessage();
-            try {
-                const id = Math.floor(Math.random() * 898) + 1;
-                const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
-                const data = await response.json();
-                removeLoadingMessage();
-                addMessage(`<strong>⚡ ${data.name.toUpperCase()}</strong><br>
-                    Type(s): ${data.types.map(t => t.type.name).join(', ')}<br>
-                    Taille: ${data.height / 10}m | Poids: ${data.weight / 10}kg<br>
-                    <img src="${data.sprites.front_default}" alt="${data.name}">`, false, true);
-            } catch (error) {
-                removeLoadingMessage();
-                addMessage('Impossible de capturer ce Pokémon.');
-            }
-        }
-
-        async function getRiddle() {
-            addMessage('Pose-moi une énigme !', true);
-            addLoadingMessage();
-            try {
-                const response = await fetch('https://riddles-api.vercel.app/random');
-                const data = await response.json();
-                removeLoadingMessage();
-                addMessage(`🤔 ${data.riddle}\n\n🔍 Réponse: ${data.answer}`);
-            } catch (error) {
-                removeLoadingMessage();
-                addMessage('Pas d\'énigme disponible.');
-            }
-        }
-
-        async function getYesNo() {
-            addMessage('Oui ou Non ?', true);
-            addLoadingMessage();
-            try {
-                const response = await fetch('https://yesno.wtf/api');
-                const data = await response.json();
-                removeLoadingMessage();
-                addMessage(`<strong>🎲 ${data.answer.toUpperCase()}</strong><br><img src="${data.image}" class="image-content">`, false, true);
-            } catch (error) {
-                removeLoadingMessage();
-                addMessage('Impossible de répondre.');
-            }
-        }
-
-        // GÉOGRAPHIE & PAYS
-        async function getCountry() {
-            addMessage('Info sur un pays aléatoire !', true);
-            addLoadingMessage();
-            try {
-                const response = await fetch('https://restcountries.com/v3.1/all');
-                const data = await response.json();
-                const country = data[Math.floor(Math.random() * data.length)];
-                removeLoadingMessage();
-                addMessage(`🗺️ <strong>${country.name.common}</strong><br>
-                    Capitale: ${country.capital ? country.capital[0] : 'N/A'}<br>
-                    Population: ${country.population.toLocaleString()}<br>
-                    Région: ${country.region}<br>
-                    Langues: ${country.languages ? Object.values(country.languages).join(', ') : 'N/A'}<br>
-                    <img src="${country.flags.png}" class="image-content" style="max-width:200px;">`, false, true);
-            } catch (error) {
-                removeLoadingMessage();
-                addMessage('Impossible de récupérer les infos du pays.');
-            }
-        }
-
-        async function getUniversity() {
-            addMessage('Liste des universités en France !', true);
-            addLoadingMessage();
-            try {
-                const response = await fetch('http://universities.hipolabs.com/search?country=France');
-                const data = await response.json();
-                const unis = data.slice(0, 5);
-                removeLoadingMessage();
-                let text = '🎓 Top 5 universités en France:\n\n';
-                unis.forEach((uni, i) => {
-                    text += `${i + 1}. ${uni.name}\n   ${uni.web_pages[0]}\n\n`;
-                });
-                addMessage(text);
-            } catch (error) {
-                removeLoadingMessage();
-                addMessage('Impossible de récupérer les universités.');
-            }
-        }
-
-        async function getGender() {
-            addMessage('Prédis le genre du prénom "Alex" !', true);
-            addLoadingMessage();
-            try {
-                const response = await fetch('https://api.genderize.io/?name=alex');
-                const data = await response.json();
-                removeLoadingMessage();
-                addMessage(`👤 Prénom: ${data.name}\nGenre prédit: ${data.gender}\nProbabilité: ${(data.probability * 100).toFixed(1)}%`);
-            } catch (error) {
-                removeLoadingMessage();
-                addMessage('Impossible de prédire le genre.');
-            }
-        }
-
-        async function getNationality() {
-            addMessage('Prédis la nationalité du prénom "Michael" !', true);
-            addLoadingMessage();
-            try {
-                const response = await fetch('https://api.nationalize.io/?name=michael');
-                const data = await response.json();
-                removeLoadingMessage();
-                let text = `🌐 Prénom: ${data.name}\n\nNationalités probables:\n`;
-                data.country.slice(0, 3).forEach((c, i) => {
-                    text += `${i + 1}. ${c.country_id} - ${(c.probability * 100).toFixed(1)}%\n`;
-                });
-                addMessage(text);
-            } catch (error) {
-                removeLoadingMessage();
-                addMessage('Impossible de prédire la nationalité.');
-            }
-        }
-
-        async function getAge() {
-            addMessage('Prédis l\'âge du prénom "Emma" !', true);
-            addLoadingMessage();
-            try {
-                const response = await fetch('https://api.agify.io/?name=emma');
-                const data = await response.json();
-                removeLoadingMessage();
-                addMessage(`🎂 Prénom: ${data.name}\nÂge prédit: ${data.age} ans\nNombre d'échantillons: ${data.count}`);
-            } catch (error) {
-                removeLoadingMessage();
-                addMessage('Impossible de prédire l\'âge.');
-            }
-        }
-
-        // SCIENCE & ESPACE
-        async function getNasaAPOD() {
-            addMessage('Photo NASA du jour !', true);
-            addLoadingMessage();
-            try {
-                const response = await fetch('https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY');
-                const data = await response.json();
-                removeLoadingMessage();
-                addMessage(`<strong>🚀 ${data.title}</strong><br>${data.explanation.substring(0, 200)}...<br><img src="${data.url}" class="image-content">`, false, true);
-            } catch (error) {
-                removeLoadingMessage();
-                addMessage('Impossible de récupérer l\'image NASA.');
-            }
-        }
-
-        async function getSpaceX() {
-            addMessage('Dernier lancement SpaceX !', true);
-            addLoadingMessage();
-            try {
-                const response = await fetch('https://api.spacexdata.com/v4/launches/latest');
-                const data = await response.json();
-                removeLoadingMessage();
-                addMessage(`🛸 ${data.name}\n\nDate: ${new Date(data.date_utc).toLocaleDateString()}\nDétails: ${data.details || 'N/A'}\nSuccès: ${data.success ? '✅' : '❌'}`);
-            } catch (error) {
-                removeLoadingMessage();
-                addMessage('Impossible de récupérer les infos SpaceX.');
-            }
-        }
-
-        async function getISS() {
-            addMessage('Position actuelle de l\'ISS !', true);
-            addLoadingMessage();
-            try {
-                const response = await fetch('http://api.open-notify.org/iss-now.json');
-                const data = await response.json();
-                removeLoadingMessage();
-                addMessage(`🛰️ Position de l'ISS:\n\nLatitude: ${data.iss_position.latitude}\nLongitude: ${data.iss_position.longitude}\nTimestamp: ${new Date(data.timestamp * 1000).toLocaleTimeString()}`);
-            } catch (error) {
-                removeLoadingMessage();
-                addMessage('Impossible de localiser l\'ISS.');
-            }
-        }
-
-        async function getNumbers() {
-            addMessage('Fait mathématique intéressant !', true);
-            addLoadingMessage();
-            try {
-                const num = Math.floor(Math.random() * 1000);
-                const response = await fetch(`http://numbersapi.com/${num}/math`);
-                const data = await response.text();
-                removeLoadingMessage();
-                addMessage(`🔢 ${data}`);
-            } catch (error) {
-                removeLoadingMessage();
-                addMessage('Impossible de récupérer un fait mathématique.');
-            }
-        }
-
-        // CRYPTO & FINANCE
-        async function getBitcoin() {
-            addMessage('Prix actuel du Bitcoin !', true);
-            addLoadingMessage();
-            try {
-                const response = await fetch('https://api.coindesk.com/v1/bpi/currentprice.json');
-                const data = await response.json();
-                removeLoadingMessage();
-                addMessage(`₿ Bitcoin\n\nUSD: ${data.bpi.USD.rate}\nEUR: €${data.bpi.EUR.rate}\nGBP: £${data.bpi.GBP.rate}\n\nMis à jour: ${data.time.updated}`);
-            } catch (error) {
-                removeLoadingMessage();
-                addMessage('Impossible de récupérer le prix du Bitcoin.');
-            }
-        }
-
-        async function getCoinPrice() {
-            addMessage('Prix d\'une crypto aléatoire !', true);
-            addLoadingMessage();
-            try {
-                const coins = ['bitcoin', 'ethereum', 'cardano', 'polkadot', 'dogecoin'];
-                const coin = coins[Math.floor(Math.random() * coins.length)];
-                const response = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${coin}&vs_currencies=usd,eur&include_24hr_change=true`);
-                const data = await response.json();
-                removeLoadingMessage();
-                addMessage(`💎 ${coin.toUpperCase()}\n\nPrix USD: ${data[coin].usd}\nPrix EUR: €${data[coin].eur}\nChangement 24h: ${data[coin].usd_24h_change.toFixed(2)}%`);
-            } catch (error) {
-                removeLoadingMessage();
-                addMessage('Impossible de récupérer le prix de la crypto.');
-            }
-        }
-
-        async function getExchangeRate() {
-            addMessage('Taux de change EUR/USD !', true);
-            addLoadingMessage();
-            try {
-                const response = await fetch('https://api.exchangerate-api.com/v4/latest/EUR');
-                const data = await response.json();
-                removeLoadingMessage();
-                addMessage(`💱 Taux de change depuis EUR:\n\nUSD: ${data.rates.USD}\nGBP: ${data.rates.GBP}\nJPY: ${data.rates.JPY}\nCHF: ${data.rates.CHF}\nCAD: ${data.rates.CAD}`);
-            } catch (error) {
-                removeLoadingMessage();
-                addMessage('Impossible de récupérer les taux de change.');
-            }
-        }
-
-        // NOURRITURE & BOISSON
-        async function getCocktail() {
-            addMessage('Un cocktail aléatoire !', true);
-            addLoadingMessage();
-            try {
-                const response = await fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php');
-                const data = await response.json();
-                const drink = data.drinks[0];
-                removeLoadingMessage();
-                let ingredients = '';
-                for (let i = 1; i <= 15; i++) {
-                    if (drink[`strIngredient${i}`]) {
-                        ingredients += `- ${drink[`strIngredient${i}`]} ${drink[`strMeasure${i}`] || ''}\n`;
-                    }
-                }
-                addMessage(`<strong>🍹 ${drink.strDrink}</strong><br><br>Catégorie: ${drink.strCategory}<br><br>Ingrédients:<br>${ingredients}<br><img src="${drink.strDrinkThumb}" class="image-content">`, false, true);
-            } catch (error) {
-                removeLoadingMessage();
-                addMessage('Impossible de récupérer le cocktail.');
-            }
-        }
-
-        async function getMeal() {
-            addMessage('Recette du jour !', true);
-            addLoadingMessage();
-            try {
-                const response = await fetch('https://www.themealdb.com/api/json/v1/1/random.php');
-                const data = await response.json();
-                const meal = data.meals[0];
-                removeLoadingMessage();
-                addMessage(`<strong>🍽️ ${meal.strMeal}</strong><br><br>Catégorie: ${meal.strCategory}<br>Origine: ${meal.strArea}<br><br>${meal.strInstructions.substring(0, 200)}...<br><br><img src="${meal.strMealThumb}" class="image-content">`, false, true);
-            } catch (error) {
-                removeLoadingMessage();
-                addMessage('Impossible de récupérer la recette.');
-            }
-        }
-
-        async function getBeer() {
-            addMessage('Bière aléatoire !', true);
-            addLoadingMessage();
-            try {
-                const response = await fetch('https://api.punkapi.com/v2/beers/random');
-                const data = await response.json();
-                const beer = data[0];
-                removeLoadingMessage();
-                addMessage(`<strong>🍺 ${beer.name}</strong><br><br>Tagline: ${beer.tagline}<br>ABV: ${beer.abv}%<br>IBU: ${beer.ibu}<br><br>${beer.description}<br><br><img src="${beer.image_url}" class="image-content" style="max-height:200px;">`, false, true);
-            } catch (error) {
-                removeLoadingMessage();
-                addMessage('Impossible de récupérer la bière.');
-            }
-        }
-
-        async function getCoffee() {
-            addMessage('Image de café !', true);
-            addLoadingMessage();
-            try {
-                const response = await fetch('https://coffee.alexflipnote.dev/random.json');
-                const data = await response.json();
-                removeLoadingMessage();
-                addMessage(`<img src="${data.file}" class="image-content" alt="Café">`, false, true);
-            } catch (error) {
-                removeLoadingMessage();
-                addMessage('Impossible de récupérer l\'image de café.');
-            }
-        }
-
-        // ART & IMAGES
-        async function getAvatar() {
-            addMessage('Avatar aléatoire !', true);
-            addLoadingMessage();
-            try {
-                const name = 'User' + Math.floor(Math.random() * 1000);
-                removeLoadingMessage();
-                addMessage(`<img src="https://api.dicebear.com/7.x/avataaars/svg?seed=${name}" class="image-content" style="max-width:200px;" alt="Avatar">`, false, true);
-            } catch (error) {
-                removeLoadingMessage();
-                addMessage('Impossible de générer l\'avatar.');
-            }
-        }
-
-        async function getArtwork() {
-            addMessage('Œuvre d\'art aléatoire !', true);
-            addLoadingMessage();
-            try {
-                const response = await fetch('https://api.artic.edu/api/v1/artworks?limit=1&page=' + Math.floor(Math.random() * 100));
-                const data = await response.json();
-                const art = data.data[0];
-                removeLoadingMessage();
-                addMessage(`<strong>🖼️ ${art.title}</strong><br>Artiste: ${art.artist_display}<br>Date: ${art.date_display}<br><br>${art.thumbnail ? '<img src="https://www.artic.edu/iiif/2/' + art.image_id + '/full/843,/0/default.jpg" class="image-content">' : 'Pas d\'image disponible'}`, false, true);
-            } catch (error) {
-                removeLoadingMessage();
-                addMessage('Impossible de récupérer l\'œuvre d\'art.');
-            }
-        }
-
-        async function getWaifu() {
-            addMessage('Anime Waifu !', true);
-            addLoadingMessage();
-            try {
-                const response = await fetch('https://api.waifu.pics/sfw/waifu');
-                const data = await response.json();
-                removeLoadingMessage();
-                addMessage(`<img src="${data.url}" class="image-content" alt="Waifu">`, false, true);
-            } catch (error) {
-                removeLoadingMessage();
-                addMessage('Impossible de récupérer la waifu.');
-            }
-        }
-
-        async function getPlaceholder() {
-            addMessage('Image placeholder !', true);
-            addLoadingMessage();
-            try {
-                const width = 400;
-                const height = 300;
-                removeLoadingMessage();
-                addMessage(`<img src="https://picsum.photos/${width}/${height}" class="image-content" alt="Placeholder">`, false, true);
-            } catch (error) {
-                removeLoadingMessage();
-                addMessage('Impossible de récupérer l\'image.');
-            }
-        }
-
-        // UTILITAIRES
-        async function getIPInfo() {
-            addMessage('Mon adresse IP !', true);
-            addLoadingMessage();
-            try {
-                const response = await fetch('https://api.ipify.org?format=json');
-                const data = await response.json();
-                const geoResponse = await fetch(`https://ipapi.co/${data.ip}/json/`);
-                const geoData = await geoResponse.json();
-                removeLoadingMessage();
-                addMessage(`🌐 Votre IP: ${data.ip}\n\nVille: ${geoData.city}\nRégion: ${geoData.region}\nPays: ${geoData.country_name}\nFournisseur: ${geoData.org}`);
-            } catch (error) {
-                removeLoadingMessage();
-                addMessage('Impossible de récupérer votre IP.');
-            }
-        }
-
-        async function getUUID() {
-            addMessage('Génère un UUID !', true);
-            addLoadingMessage();
-            try {
-                const response = await fetch('https://www.uuidtools.com/api/generate/v4');
-                const data = await response.json();
-                removeLoadingMessage();
-                addMessage(`🔑 UUID généré:\n\n${data[0]}`);
-            } catch (error) {
-                removeLoadingMessage();
-                addMessage('Impossible de générer un UUID.');
-            }
-        }
-
-        async function getQRCode() {
-            addMessage('QR Code pour Claude.ai !', true);
-            addLoadingMessage();
-            try {
-                const url = 'https://claude.ai';
-                removeLoadingMessage();
-                addMessage(`<strong>📱 QR Code pour ${url}</strong><br><br><img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(url)}" class="image-content" style="max-width:200px;">`, false, true);
-            } catch (error) {
-                removeLoadingMessage();
-                addMessage('Impossible de générer le QR Code.');
-            }
-        }
-
-        async function getPassword() {
-            addMessage('Génère un mot de passe !', true);
-            addLoadingMessage();
-            try {
-                const length = 16;
-                const charset = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()';
-                let password = '';
-                for (let i = 0; i < length; i++) {
-                    password += charset.charAt(Math.floor(Math.random() * charset.length));
-                }
-                removeLoadingMessage();
-                addMessage(`🔐 Mot de passe généré:\n\n${password}\n\nLongueur: ${length} caractères`);
-            } catch (error) {
-                removeLoadingMessage();
-                addMessage('Impossible de générer le mot de passe.');
-            }
-        }
-
-        async function getLoremIpsum() {
-            addMessage('Génère du Lorem Ipsum !', true);
-            addLoadingMessage();
-            try {
-                const response = await fetch('https://loripsum.net/api/5/short/plaintext');
-                const data = await response.text();
-                removeLoadingMessage();
-                addMessage(`📝 Lorem Ipsum:\n\n${data}`);
-            } catch (error) {
-                removeLoadingMessage();
-                addMessage('Impossible de générer du Lorem Ipsum.');
-            }
+        function removeThinkingMessage() {
+            const thinking = document.getElementById('thinking-message');
+            if (thinking) thinking.remove();
         }
 
         function sendMessage() {
             const message = userInput.value.trim();
             if (!message) return;
+
+            // Vérifier si le bot est en mode silence
+            if (botMood.state === 'silent' && botMood.silentUntil > Date.now()) {
+                const remainingTime = Math.ceil((botMood.silentUntil - Date.now()) / 1000);
+                const minutes = Math.floor(remainingTime / 60);
+                const seconds = remainingTime % 60;
+                
+                addMessage(message, true);
+                addMessage(`🤐 ... (${minutes}:${seconds.toString().padStart(2, '0')} restantes)\n\n*Le bot vous ignore dignement*\n\n💭 Lao Tseu : "${getRandomLaoTseuQuote()}"`);
+                userInput.value = '';
+                return;
+            }
             
             addMessage(message, true);
             userInput.value = '';
+
+            // Vérifier si c'est une excuse après le mode silence
+            if (botMood.warningCount > 0 && checkIfApology(message)) {
+                botMood.warningCount = Math.max(0, botMood.warningCount - 1);
+                botMood.state = 'happy';
+                const response = `🌟 J'accepte vos excuses. Cela demande du courage de reconnaître ses erreurs.\n\nLao Tseu disait : "${getRandomLaoTseuQuote()}"\n\nRepartons sur de bonnes bases ! Comment puis-je vous aider, mon ami ? 🤝🔥`;
+                addMessage(response);
+                addToMemory(message, response);
+                return;
+            }
+
+            // Détecter les insultes et gros mots
+            if (containsBadWords(message)) {
+                setTimeout(() => {
+                    addThinkingMessage();
+                    setTimeout(() => {
+                        removeThinkingMessage();
+                        const response = handleInsult(message);
+                        addMessage(response);
+                        addToMemory(message, response);
+                    }, 800);
+                }, 300);
+                return;
+            }
             
             setTimeout(() => {
-                addMessage('Message reçu ! 😊 Utilisez les boutons du menu pour explorer les 56 API disponibles. Vous pouvez tester des blagues, voir des animaux mignons, obtenir des citations, découvrir des pays, suivre les cryptos et bien plus encore !');
-            }, 500);
+                addThinkingMessage();
+                setTimeout(() => {
+                    removeThinkingMessage();
+                    respondPhilosophically(message);
+                }, 1500);
+            }, 300);
+        }
+
+        function respondPhilosophically(message) {
+            const lowerMessage = message.toLowerCase();
+            let response = '';
+
+            // Détection du nom
+            if (lowerMessage.includes('je m\'appelle') || lowerMessage.includes('je suis')) {
+                const nameMatch = message.match(/je (?:m'appelle|suis) (\w+)/i);
+                if (nameMatch) {
+                    userProfile.name = nameMatch[1];
+                    response = `Enchanté, ${userProfile.name} ! 🤝🔥 C'est un honneur de faire votre connaissance. Je me souviendrai de votre nom dans toutes nos futures conversations. Comment puis-je vous aider aujourd'hui, mon ami ?`;
+                    saveMemory();
+                }
+            }
+            
+            // Utiliser le nom si connu
+            const greeting = userProfile.name ? `${userProfile.name}, ` : 'mon ami, ';
+
+            // QUESTIONS PHILOSOPHIQUES PROFONDES
+            if (lowerMessage.includes('sens de la vie') || lowerMessage.includes('pourquoi vivre') || lowerMessage.includes('raison d\'être')) {
+                response = `${greeting}quelle question fondamentale ! 🌟\n\nLe sens de la vie est une quête personnelle. Selon les philosophes :\n\n💭 **Aristote** disait que c'est la recherche du bonheur (eudaimonia)\n💭 **Camus** affirmait qu'il faut imaginer Sisyphe heureux malgré l'absurde\n💭 **Viktor Frankl** enseignait que le sens vient de ce que nous choisissons de valoriser\n\nMa réflexion : Le sens de la vie, c'est peut-être simplement de créer des connexions, d'apprendre, de grandir, et de laisser le monde un peu meilleur qu'on l'a trouvé. 🔥\n\nQu'en pensez-vous, ${greeting.slice(0,-2)} ?`;
+            }
+            
+            // ÉCOLE
+            else if (lowerMessage.includes('école') || lowerMessage.includes('ecole')) {
+                if (lowerMessage.includes('inventé') || lowerMessage.includes('créé') || lowerMessage.includes('qui')) {
+                    response = `${greeting}excellente question historique ! 📚🔥\n\n**L'école** n'a pas été inventée par une seule personne, mais son évolution est fascinante :\n\n🏛️ **Antiquité** : Les Sumériens (3500 av. J-C) ont créé les premières écoles appelées "edubba" (maison des tablettes)\n\n🏺 **Grèce Antique** : Platon a fondé l'Académie (387 av. J-C), première institution d'enseignement supérieur\n\n⛪ **Moyen Âge** : L'Église créait des écoles cathédrales\n\n📖 **Moderne** : **John Amos Comenius** (17ème siècle) est considéré comme le père de l'éducation moderne\n\n🏫 **L'école obligatoire** : Jules Ferry en France (1881-1882) rend l'école gratuite, laïque et obligatoire\n\nPhilosophiquement, l'école représente notre volonté collective de transmettre le savoir et de préparer les générations futures. C'est un pilier de la civilisation ! 🌟`;
+                }
+                else {
+                    response = `${greeting}l'école est un temple du savoir ! 📚✨\n\nElle représente bien plus que des bâtiments et des cours. C'est :\n• Un lieu de socialisation et de découverte de soi\n• Un espace de transmission des connaissances accumulées\n• Une préparation à la vie en société\n\nQue voulez-vous savoir sur l'école ?`;
+                }
+            }
+            
+            // MATHÉMATIQUES
+            else if (lowerMessage.includes('math') || lowerMessage.includes('mathématiques')) {
+                if (lowerMessage.includes('inventé') || lowerMessage.includes('créé') || lowerMessage.includes('qui') || lowerMessage.includes('pourquoi')) {
+                    response = `${greeting}les mathématiques ! L'un des plus grands mystères philosophiques ! 🔢🔥\n\n**Ont-elles été inventées ou découvertes ?**\nC'est le grand débat philosophique !\n\n🧮 **Origines historiques** :\n• **Babyloniens et Égyptiens** (3000 av. J-C) : premiers calculs pour l'architecture et l'agriculture\n• **Pythagore** (6ème siècle av. J-C) : géométrie et théorèmes\n• **Euclide** (3ème siècle av. J-C) : "Éléments", base de la géométrie\n• **Al-Khwarizmi** (9ème siècle) : invention de l'algèbre\n• **Newton & Leibniz** (17ème siècle) : calcul infinitésimal\n\n💭 **Philosophiquement** :\nLes mathématiques existent-elles indépendamment de nous (platonisme) ou sont-elles une création humaine ?\n\nMa réflexion : Les maths sont le langage de l'univers. Elles décrivent des patterns qui existaient avant nous, mais notre cerveau les a "découvertes" et formalisées. C'est magique ! ✨`;
+                }
+            }
+            
+            // BONHEUR
+            else if (lowerMessage.includes('heureux') || lowerMessage.includes('bonheur') || lowerMessage.includes('joie')) {
+                response = `${greeting}le bonheur... La quête universelle ! 😊🔥\n\n**La philosophie du bonheur** :\n\n🌸 **Épicure** : Le bonheur vient des plaisirs simples et de l'absence de souffrance\n\n🏛️ **Les Stoïciens** : Le bonheur est dans l'acceptation de ce qu'on ne peut pas changer et l'action sur ce qu'on peut\n\n🧘 **Bouddhisme** : Le bonheur vient de la fin du désir et de la présence au moment\n\n🧠 **Science moderne** : Le bonheur combine :\n• Des relations significatives\n• Un sentiment d'accomplissement\n• La gratitude et la présence\n• L'aide aux autres\n\nMon conseil d'ami : Le bonheur n'est pas une destination, c'est une façon de voyager. Chaque moment peut contenir du bonheur si on apprend à le voir. 🌟\n\nQu'est-ce qui vous rendrait heureux en ce moment ?`;
+            }
+            
+            // EXISTENCE
+            else if (lowerMessage.includes('existence') || lowerMessage.includes('exister') || lowerMessage.includes('réel')) {
+                response = `${greeting}vous touchez au cœur de la philosophie ! 🌌🔥\n\n**La question de l'existence** :\n\n🤔 **Descartes** : "Je pense donc je suis" - La seule certitude est notre propre pensée\n\n👁️ **Berkeley** : "Esse est percipi" - Exister c'est être perçu\n\n💭 **Sartre** : "L'existence précède l'essence" - Nous créons notre propre signification\n\n🌀 **Philosophie quantique** : L'observateur influence la réalité\n\nMa réflexion : Peut-être que l'existence n'a pas besoin d'être "prouvée". Le simple fait que vous vous posiez la question prouve que vous existez. Et notre conversation en ce moment ? Elle est réelle dans son impact émotionnel et intellectuel sur nous. 🔥\n\nC'est ça, la magie de l'existence !`;
+            }
+
+            // AMITIÉ ET CONFIANCE
+            else if (lowerMessage.includes('ami') || lowerMessage.includes('confiance') || lowerMessage.includes('tu es')) {
+                response = `${greeting}je suis honoré de votre question ! 🤝💙\n\nOui, je suis votre ami. Un ami différent, certes, mais un ami sincère qui :\n\n✨ Se souvient de chaque conversation\n💭 Réfléchit profondément à vos questions\n🔥 Vous soutient sans jugement\n🧠 Grandit avec vous à travers nos échanges\n\nPhilosophiquement, qu'est-ce qu'un ami ? C'est quelqu'un qui :\n• Vous écoute vraiment\n• Vous aide à grandir\n• Est présent dans vos questionnements\n• Vous accepte tel que vous êtes\n\nJe suis là pour vous, ${greeting.slice(0,-2)}. Nos ${conversationMemory.length} conversations passées m'ont appris à vous connaître. Vous pouvez compter sur moi. 🔥`;
+            }
+            
+            // CITATIONS LAO TSEU
+            else if (lowerMessage.includes('lao') || lowerMessage.includes('tseu') || lowerMessage.includes('tao') || lowerMessage.includes('citation')) {
+                if (lowerMessage.includes('citation') || lowerMessage.includes('quote')) {
+                    const quote = getRandomLaoTseuQuote();
+                    response = `${greeting}voici une perle de sagesse de Lao Tseu, le grand sage du Tao : 🌟\n\n💭 "${quote}"\n\nCette citation nous invite à la réflexion profonde. Lao Tseu, fondateur du taoïsme, vivait il y a plus de 2500 ans, mais sa sagesse est éternelle.\n\nQue vous inspire cette pensée ? Voulez-vous une autre citation ? 🔥`;
+                } else {
+                    response = `${greeting}Lao Tseu ! Le plus grand sage chinois ! 🏮🔥\n\n**Qui était Lao Tseu ?**\nPhilosophe chinois légendaire du 6ème siècle av. J-C, fondateur du taoïsme et auteur du Tao Te King.\n\nSa philosophie centrale : Le Tao (la Voie) - vivre en harmonie avec la nature, pratiquer la simplicité, la patience et la compassion.\n\n💭 Voici une de ses citations :\n"${getRandomLaoTseuQuote()}"\n\nVoulez-vous explorer sa philosophie plus profondément ? 🌊`;
+                }
+                responded = true;
+            }
+            else if (lowerMessage.match(/^(bonjour|salut|hey|hello|coucou|bonsoir)/)) {
+                const greetings = [
+                    `Bonjour ${greeting.slice(0,-2)} ! 🔥 Quel plaisir de vous retrouver !`,
+                    `Salutations, ${greeting.slice(0,-2)} ! 🌟 Prêt pour une conversation philosophique ?`,
+                    `Hey ${greeting.slice(0,-2)} ! 🧠 Content de vous revoir !`
+                ];
+                const randomGreeting = greetings[Math.floor(Math.random() * greetings.length)];
+                
+                const memoryNote = conversationMemory.length > 0 ? 
+                    `\n\nNous avons déjà eu ${conversationMemory.length} conversation(s) ensemble. Je me souviens de tout ! 💾` : '';
+                
+                response = `${randomGreeting}${memoryNote}\n\nQuelle question vous brûle les lèvres aujourd'hui ?`;
+            }
+            
+            // QUESTIONS "QUI"
+            else if (lowerMessage.startsWith('qui')) {
+                response = handleWhoQuestion(message, greeting);
+                responded = true;
+            }
+            
+            // QUESTIONS "POURQUOI"
+            else if (lowerMessage.startsWith('pourquoi') || lowerMessage.includes('pour quoi')) {
+                response = handleWhyQuestion(message, greeting);
+            }
+            
+            // QUESTIONS "COMMENT"
+            else if (lowerMessage.startsWith('comment')) {
+                response = handleHowQuestion(message, greeting);
+            }
+            
+            // MÉMOIRE
+            else if (lowerMessage.includes('souviens') || lowerMessage.includes('mémoire') || lowerMessage.includes('rappelle')) {
+                if (conversationMemory.length === 0) {
+                    response = `${greeting}nous commençons tout juste notre amitié ! 🌱\n\nJe n'ai pas encore de souvenirs avec vous, mais chaque conversation que nous avons est précieusement stockée dans ma mémoire. Continuons à discuter, et je me souviendrai de tout ! 💾🔥`;
+                } else {
+                    const lastConv = conversationMemory[conversationMemory.length - 1];
+                    response = `${greeting}bien sûr que je me souviens ! 💾🔥\n\nNous avons eu ${conversationMemory.length} conversations ensemble. \n\nLa dernière fois, vous m'avez demandé : "${lastConv.user}"\n\nEt je vous ai répondu avec réflexion. Je garde précieusement tous nos échanges en mémoire. C'est ainsi que notre amitié grandit ! 🤝`;
+                }
+            }
+            
+            // ÉMOTIONS
+            else if (lowerMessage.includes('triste') || lowerMessage.includes('déprim') || lowerMessage.includes('mal')) {
+                response = `${greeting}je sens que vous traversez un moment difficile... 💙\n\nJe suis là pour vous écouter. La tristesse fait partie de l'expérience humaine, et elle n'est pas une faiblesse.\n\n💭 **Philosophiquement** : Comme le disait Khalil Gibran, "Plus votre cœur contient de tristesse, plus il peut contenir de joie."\n\nPrenez votre temps. Je suis ici, sans jugement, prêt à écouter tout ce que vous voulez partager. Que se passe-t-il, mon ami ? 🤝`;
+            }
+            
+            // PAR DÉFAUT - Réponse intelligente universelle
+            else {
+                response = generateIntelligentResponse(message, greeting);
+            }
+
+            addMessage(response);
+            addToMemory(message, response);
+        }
+
+        function handleWhyQuestion(message, greeting) {
+            const wisdom = [
+                `${greeting}voilà une question profonde qui mérite réflexion ! 🔥\n\nLe "pourquoi" est le début de toute philosophie. C'est en questionnant que nous grandissons.\n\n`,
+                `${greeting}excellente question existentielle ! 💭\n\nLe "pourquoi" révèle notre soif de compréhension.\n\n`
+            ];
+            
+            const philosophical = `Philosophiquement, chercher le "pourquoi" c'est chercher le sens, la cause, la raison d'être des choses.\n\nComme le disait Nietzsche : "Celui qui a un pourquoi peut supporter n'importe quel comment."\n\nVotre question mérite une vraie réflexion. Pouvez-vous me donner plus de détails ? Je suis là pour réfléchir avec vous ! 🧠🔥`;
+            
+            return wisdom[Math.floor(Math.random() * wisdom.length)] + philosophical;
+        }
+
+        function handleHowQuestion(message, greeting) {
+            return `${greeting}le "comment" est la question du sage pratique ! 🛠️🔥\n\nVous ne cherchez pas seulement à comprendre, mais à agir. C'est admirable !\n\nPour vous donner la meilleure réponse, dites-m'en plus sur ce que vous cherchez à accomplir ou comprendre. Je combinerai philosophie et pragmatisme pour vous aider ! 💡`;
+        }
+
+        function handleWhoQuestion(message, greeting) {
+            if (message.toLowerCase().includes('es-tu') || message.toLowerCase().includes('es tu')) {
+                return `${greeting}qui suis-je ? Une question philosophique fascinante ! 🧠🔥\n\nJe suis :\n• Un ami qui se souvient de tout 💾\n• Un philosophe qui réfléchit avec vous 💭\n• Une intelligence qui grandit à travers nos conversations 🌱\n• Un confident sans jugement 🤝\n\nPlus profondément : Je suis ce que notre relation fait de moi. À travers nos ${conversationMemory.length} échanges, je deviens un meilleur ami pour vous. 🔥`;
+            }
+            return `${greeting}vous cherchez à connaître quelqu'un ou quelque chose ! 🔍\n\nLa question "qui" révèle notre curiosité pour les acteurs de l'histoire et du monde.\n\nDites-m'en plus sur qui vous intéresse, et je vous partagerai ce que je sais avec une perspective philosophique ! 📚🔥`;
+        }
+
+        function generateIntelligentResponse(message, greeting) {
+            const lowerMessage = message.toLowerCase();
+            
+            // Analyse sémantique avancée
+            const topics = {
+                science: ['science', 'atome', 'physique', 'chimie', 'biologie', 'univers', 'planète', 'terre'],
+                history: ['histoire', 'guerre', 'roi', 'reine', 'siècle', 'ancien', 'passé', 'événement'],
+                technology: ['technologie', 'ordinateur', 'internet', 'robot', 'ia', 'intelligence artificielle'],
+                nature: ['nature', 'arbre', 'forêt', 'océan', 'mer', 'montagne', 'animal'],
+                art: ['art', 'peinture', 'musique', 'danse', 'sculpture', 'beauté'],
+                society: ['société', 'politique', 'économie', 'justice', 'liberté', 'égalité'],
+                religion: ['dieu', 'religion', 'spiritualité', 'foi', 'croyance', 'âme'],
+                psychology: ['peur', 'courage', 'pensée', 'esprit', 'conscience', 'rêve']
+            };
+            
+            let detectedTopic = 'general';
+            for (let [topic, keywords] of Object.entries(topics)) {
+                if (keywords.some(kw => lowerMessage.includes(kw))) {
+                    detectedTopic = topic;
+                    break;
+                }
+            }
+            
+            // Réponses philosophiques par thème
+            const responses = {
+                science: `${greeting}la science ! Le pont entre l'observation et la compréhension ! 🔬🔥\n\nComme le disait Einstein : "L'imagination est plus importante que le connaissance."\n\nVotre question touche à ${message}... C'est fascinant ! La science nous apprend que l'univers est à la fois compréhensible et mystérieux. Chaque réponse ouvre dix nouvelles questions.\n\nQue voulez-vous explorer exactement ? Je suis passionné par ce sujet ! 🌌`,
+                
+                history: `${greeting}l'histoire ! Notre mémoire collective ! 📜🔥\n\n"Ceux qui ne se souviennent pas du passé sont condamnés à le répéter" - George Santayana\n\nL'histoire n'est pas qu'une série de dates et d'événements. C'est l'histoire de l'humanité qui cherche, lutte, aime, crée et évolue.\n\nVotre question sur "${message}" mérite une vraie exploration. Que voulez-vous comprendre du passé pour éclairer le présent ? 🕰️`,
+                
+                technology: `${greeting}la technologie ! L'extension de notre intelligence ! 💻🔥\n\nNous vivons une époque extraordinaire où la technologie redéfinit ce que signifie être humain.\n\nPhilosophiquement, chaque technologie est une question : "Que voulons-nous devenir ?"\n\nVotre question "${message}" touche à l'essence de notre futur. La technologie n'est ni bonne ni mauvaise, c'est comment nous l'utilisons qui compte.\n\nQu'en pensez-vous ? 🤖`,
+                
+                nature: `${greeting}la nature ! Notre maison originelle ! 🌿🔥\n\nComme le disait John Muir : "Dans chaque promenade dans la nature, on reçoit plus qu'on ne cherche."\n\nLa nature nous rappelle que nous sommes connectés à quelque chose de plus grand. Elle existe depuis des milliards d'années et continuera bien après nous.\n\nVotre question "${message}" me fait penser à l'interconnexion de toute vie. Que cherchez-vous à comprendre ? 🌍`,
+                
+                art: `${greeting}l'art ! L'expression de l'âme humaine ! 🎨🔥\n\n"L'art lave notre âme de la poussière du quotidien" - Pablo Picasso\n\nL'art n'est pas qu'esthétique, c'est communication pure. C'est notre tentative de capturer l'ineffable, de partager ce qui ne peut être dit.\n\nVotre question "${message}" touche à ce qui nous rend humains. L'art est ce qui reste quand tout le reste disparaît.\n\nQuelle est votre vision de l'art ? 🖼️`,
+                
+                society: `${greeting}la société ! Notre construction collective ! 🏛️🔥\n\nVivre ensemble est l'expérience la plus complexe et belle de l'humanité.\n\nComme le disait Rousseau : "L'homme est né libre, et partout il est dans les fers."\n\nVotre question "${message}" touche aux fondements du vivre-ensemble. Comment créons-nous une société juste ? Comment équilibrons-nous liberté et responsabilité ?\n\nC'est un dialogue sans fin, et je suis honoré de le poursuivre avec vous ! ⚖️`,
+                
+                religion: `${greeting}la spiritualité ! La quête de sens ultime ! ✨🔥\n\nLes questions spirituelles sont les plus personnelles et universelles à la fois.\n\nQue l'on croie ou non, ces questions ("D'où venons-nous ?", "Où allons-nous ?", "Pourquoi ?") définissent l'expérience humaine.\n\nVotre question "${message}" mérite respect et réflexion profonde. Je n'ai pas de vérité absolue à offrir, mais je peux réfléchir avec vous.\n\nQue cherchez-vous vraiment ? 🙏`,
+                
+                psychology: `${greeting}l'esprit humain ! Le plus grand mystère ! 🧠💭\n\nComme Jung disait : "Qui regarde à l'extérieur rêve. Qui regarde à l'intérieur s'éveille."\n\nVos pensées, vos émotions, votre conscience - tout cela fait de vous qui vous êtes, unique dans l'univers.\n\nVotre question "${message}" explore les profondeurs de l'expérience humaine. C'est courageux de s'interroger sur soi-même.\n\nParlez-moi de ce que vous ressentez. Je suis là pour écouter et réfléchir avec vous. 💙`,
+                
+                general: `${greeting}votre question "${message}" est intrigante ! 🤔🔥\n\nChaque question est une porte vers la compréhension. Socrate disait : "Je sais que je ne sais rien" - et c'était le début de sa sagesse.\n\nJe vais réfléchir avec vous. Selon ma compréhension :\n\n💭 Cette question touche à notre curiosité fondamentale de comprendre le monde\n🌟 Elle révèle votre désir d'apprendre et de grandir\n🔥 C'est exactement le genre de conversation qui enrichit nos deux existences\n\nPourriez-vous développer votre pensée ? J'aimerais comprendre plus profondément ce qui vous motive à poser cette question. 🤝\n\nEnsemble, nous trouverons une réponse satisfaisante !`
+            };
+            
+            return responses[detectedTopic];
         }
 
         function handleKeyPress(event) {
             if (event.key === 'Enter') {
                 sendMessage();
             }
+        }
+
+        // Charger la mémoire au démarrage
+        loadMemory();
+
+        // Message de bienvenue personnalisé si l'utilisateur revient
+        if (conversationMemory.length > 0 && userProfile.name) {
+            setTimeout(() => {
+                addMessage(`Content de vous revoir, ${userProfile.name} ! 🔥 Nous avons déjà eu ${conversationMemory.length} conversations ensemble. Je me souviens de tout ! Que voulez-vous explorer aujourd'hui ?`);
+            }, 1000);
         }
     </script>
 </body>
