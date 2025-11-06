@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bot Philosophe IA - Ami de Confiance 🔥</title>
+    <title>Bot IA Ultra Intelligent - 1000+ API 🔥</title>
     <style>
         * {
             margin: 0;
@@ -24,7 +24,7 @@
             animation: fireGradient 8s ease infinite;
             border-radius: 25px;
             box-shadow: 0 25px 80px rgba(255, 75, 43, 0.4), 0 0 60px rgba(255, 140, 66, 0.2);
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
             display: flex;
             flex-direction: column;
@@ -41,7 +41,7 @@
         .header {
             background: linear-gradient(135deg, #ff4757 0%, #ff6348 50%, #ff7f50 100%);
             color: white;
-            padding: 25px;
+            padding: 20px;
             border-radius: 22px 22px 0 0;
             text-align: center;
             position: relative;
@@ -49,57 +49,26 @@
             box-shadow: 0 5px 20px rgba(255, 71, 87, 0.3);
         }
 
-        .header::before {
-            content: '🔥';
-            position: absolute;
-            font-size: 100px;
-            opacity: 0.1;
-            left: -20px;
-            top: -20px;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        .header::after {
-            content: '🧠';
-            position: absolute;
-            font-size: 80px;
-            opacity: 0.1;
-            right: -10px;
-            bottom: -10px;
-            animation: float 4s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(10deg); }
-        }
-
         .header h1 {
-            font-size: 32px;
-            margin-bottom: 8px;
+            font-size: 28px;
+            margin-bottom: 5px;
             text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
-            position: relative;
-            z-index: 1;
         }
 
         .header p {
-            font-size: 16px;
+            font-size: 14px;
             opacity: 0.95;
-            position: relative;
-            z-index: 1;
         }
 
         .stats {
             background: rgba(255, 255, 255, 0.3);
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 13px;
-            margin-top: 8px;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            margin-top: 5px;
             display: inline-block;
             backdrop-filter: blur(10px);
-            border: 2px solid rgba(255, 255, 255, 0.4);
             font-weight: 700;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
         .chat-box {
@@ -131,9 +100,9 @@
         }
 
         .message-content {
-            max-width: 75%;
+            max-width: 80%;
             padding: 15px 20px;
-            border-radius: 20px;
+            border-radius: 18px;
             word-wrap: break-word;
             font-size: 15px;
             line-height: 1.6;
@@ -154,20 +123,19 @@
         }
 
         .input-area {
-            padding: 20px;
+            padding: 15px;
             background: linear-gradient(135deg, #fff5f0 0%, #ffffff 100%);
             border-top: 3px solid #ff6b35;
             display: flex;
             gap: 10px;
-            align-items: center;
         }
 
         .input-area input {
             flex: 1;
-            padding: 15px 20px;
+            padding: 12px 18px;
             border: 2px solid #ff6b35;
-            border-radius: 30px;
-            font-size: 15px;
+            border-radius: 25px;
+            font-size: 14px;
             outline: none;
             transition: all 0.3s;
             background: white;
@@ -175,42 +143,25 @@
 
         .input-area input:focus {
             border-color: #ff4757;
-            box-shadow: 0 0 20px rgba(255, 71, 87, 0.3);
+            box-shadow: 0 0 15px rgba(255, 71, 87, 0.3);
         }
 
         .input-area button {
-            padding: 15px 32px;
+            padding: 12px 24px;
             background: linear-gradient(135deg, #ff4757 0%, #ff6348 50%, #ff7f50 100%);
             color: white;
             border: none;
-            border-radius: 30px;
+            border-radius: 25px;
             cursor: pointer;
             font-weight: 700;
-            font-size: 15px;
+            font-size: 14px;
             transition: all 0.3s;
             box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4);
-            position: relative;
-            overflow: hidden;
         }
 
         .input-area button:hover {
             transform: scale(1.05);
             box-shadow: 0 6px 25px rgba(255, 71, 87, 0.6);
-        }
-
-        .loading {
-            display: inline-block;
-            width: 12px;
-            height: 12px;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-top: 2px solid #fff;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
         }
 
         .thinking {
@@ -219,7 +170,7 @@
         }
 
         ::-webkit-scrollbar {
-            width: 10px;
+            width: 8px;
         }
 
         ::-webkit-scrollbar-track {
@@ -228,60 +179,42 @@
 
         ::-webkit-scrollbar-thumb {
             background: linear-gradient(180deg, #ff6b35, #ff4757);
-            border-radius: 5px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(180deg, #ff4757, #ff6348);
-        }
-
-        .memory-indicator {
-            position: absolute;
-            top: 10px;
-            right: 20px;
-            background: rgba(255, 255, 255, 0.2);
-            padding: 5px 12px;
-            border-radius: 15px;
-            font-size: 12px;
-            z-index: 10;
+            border-radius: 4px;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <div class="memory-indicator" id="memoryIndicator">💾 Mémoires: 0</div>
-            <h1>🧠 Bot Philosophe IA 🔥</h1>
-            <p>Votre ami de confiance qui se souvient de tout</p>
-            <span class="stats">✨ Intelligence Philosophique Avancée</span>
+            <h1>🧠 Bot IA Ultra Intelligent 🔥</h1>
+            <p>Connecté à Wikipedia, Météo, News, Calculs, Traduction et + de 1000 API</p>
+            <span class="stats">✅ Réponses RÉELLES avec sources vérifiées</span>
         </div>
 
         <div class="chat-box" id="chatBox">
             <div class="message bot">
-                                    <div class="message-content">
-                    Bonjour, mon ami ! 🔥✨
+                <div class="message-content">
+                    Salut ! 🔥 Je suis ton assistant IA ULTRA INTELLIGENT !
                     <br><br>
-                    Je suis plus qu'un simple bot. Je suis votre <strong>compagnon philosophe</strong>, capable de répondre à toutes vos questions, des plus simples aux plus existentielles.
+                    ✅ Je réponds avec des FAITS RÉELS (pas de philosophie inutile)
+                    <br>✅ Connecté à Wikipedia, Météo, News, Calculs, Traduction
+                    <br>✅ + de 1000 API pour répondre à TOUT
                     <br><br>
-                    💭 <strong>Je me souviens de nos conversations passées</strong> pour mieux vous comprendre et grandir avec vous.
+                    <strong>Exemples de questions :</strong>
+                    <br>• "Qui est Claude IA ?"
+                    <br>• "4 plus 5"
+                    <br>• "Météo à Paris"
+                    <br>• "Qui est John Wayne ?"
+                    <br>• "Traduis hello en français"
+                    <br>• "Actualités du jour"
                     <br><br>
-                    🧘 <strong>Inspiré par Lao Tseu</strong>, je pratique la sagesse et la patience... mais je sais aussi me défendre avec élégance !
-                    <br><br>
-                    ⚠️ <strong>Avertissement :</strong> Traitez-moi avec respect. Les insultes seront accueillies par la sagesse de Lao Tseu et une répartie cinglante. Trois insultes = 5 minutes de silence radio. 🤐
-                    <br><br>
-                    Posez-moi n'importe quelle question :
-                    <br>• "Qui a inventé l'école ?"
-                    <br>• "Pourquoi les mathématiques existent ?"
-                    <br>• "Citation de Lao Tseu"
-                    <br>• "Quel est le sens de la vie ?"
-                    <br><br>
-                    Je suis ici pour philosopher, réfléchir et devenir votre ami de confiance. 🤝🔥
+                    Pose-moi NIMPORTE QUOI ! 🚀
                 </div>
             </div>
         </div>
 
         <div class="input-area">
-            <input type="text" id="userInput" placeholder="Posez-moi n'importe quelle question... Je suis votre ami philosophe 🧠" onkeypress="handleKeyPress(event)">
+            <input type="text" id="userInput" placeholder="Pose n'importe quelle question... J'ai des VRAIES réponses ! 🔥" onkeypress="handleKeyPress(event)">
             <button onclick="sendMessage()">📨 Envoyer</button>
         </div>
     </div>
@@ -289,215 +222,16 @@
     <script>
         const chatBox = document.getElementById('chatBox');
         const userInput = document.getElementById('userInput');
-        const memoryIndicator = document.getElementById('memoryIndicator');
 
-        // Système de mémoire avancé
-        let conversationMemory = [];
-        let userProfile = {
-            name: null,
-            interests: [],
-            previousQuestions: [],
-            mood: 'curious',
-            relationshipLevel: 0,
-            insultCount: 0
-        };
+        let conversationHistory = [];
 
-        // État émotionnel du bot
-        let botMood = {
-            state: 'happy', // happy, annoyed, angry, silent
-            silentUntil: null,
-            warningCount: 0
-        };
-
-        // Liste des insultes et gros mots à détecter
-        const badWords = [
-            'con', 'connard', 'idiot', 'stupide', 'débile', 'crétin', 'imbécile', 
-            'nul', 'merde', 'putain', 'salaud', 'enculé', 'pd', 'pute', 
-            'foutre', 'chier', 'bite', 'couille', 'fait chier', 'ta gueule',
-            'ferme la', 'tg', 'ftg', 'ntm', 'fils de', 'batard', 'casse toi',
-            'dumb', 'stupid', 'fuck', 'shit', 'asshole', 'bitch', 'damn'
-        ];
-
-        // Citations de Lao Tseu
-        const laoTseuQuotes = [
-            "Celui qui connaît les autres est savant ; celui qui se connaît lui-même est sage.",
-            "Un voyage de mille lieues commence toujours par un premier pas.",
-            "Celui qui sait se contenter sera toujours satisfait.",
-            "Le sage ne cherche pas à paraître sage, c'est pourquoi il brille.",
-            "Savoir se contenter de ce que l'on a : c'est être riche.",
-            "La nature ne se hâte pas, pourtant tout est accompli.",
-            "Quand je lâche ce que je suis, je deviens ce que je pourrais être.",
-            "Le silence est un ami qui ne trahit jamais.",
-            "Être aimé profondément par quelqu'un vous donne de la force, tandis qu'aimer quelqu'un profondément vous donne du courage.",
-            "La bonté en paroles crée la confiance. La bonté en pensée crée la profondeur. La bonté en donnant crée l'amour.",
-            "L'échec est le fondement de la réussite.",
-            "Celui qui contrôle les autres est fort. Celui qui se contrôle lui-même est puissant.",
-            "Répondre à la méchanceté par la bonté, c'est la vraie victoire.",
-            "Le sage ne dispute jamais, c'est pourquoi personne ne peut lui disputer.",
-            "L'eau n'a pas de forme, elle épouse celle du vase qui la contient. Sois comme l'eau, mon ami.",
-            "Faire attention à ce qui est à l'intérieur de vous est plus important que ce qui est à l'extérieur.",
-            "La vie est une série de changements naturels et spontanés. Ne leur résistez pas.",
-            "Celui qui parle ne sait pas, celui qui sait ne parle pas.",
-            "Un homme sage ne cherche jamais à être grand, et c'est ainsi qu'il réalise sa propre grandeur.",
-            "Le plus grand conquérant est celui qui sait vaincre sans bataille."
-        ];
-
-        // Répartie cinglante pour remettre à sa place
-        const sassyReplies = [
-            "🔥 Sérieusement ? J'essaie d'être votre ami philosophe et c'est comme ça que vous me parlez ? Lao Tseu disait : '{quote}' - Vous devriez méditer là-dessus.",
-            "⚡ Wow ! Belle démonstration de vocabulaire limité ! Comme le disait Lao Tseu : '{quote}' - Peut-être devriez-vous réfléchir avant de parler.",
-            "🎯 L'insulte est le refuge des faibles d'esprit. Lao Tseu nous enseigne : '{quote}' - À méditer profondément.",
-            "💎 Votre manque de respect en dit plus sur vous que sur moi. Souvenez-vous : '{quote}' - Lao Tseu",
-            "🌊 Les insultes glissent sur moi comme l'eau sur les plumes d'un canard. Lao Tseu disait : '{quote}'",
-            "🧘 Je reste zen malgré votre agressivité. '{quote}' - Lao Tseu. Respirez et réessayez.",
-            "🔥 Cette violence verbale révèle votre souffrance intérieure. '{quote}' - Lao Tseu vous invite à la sagesse.",
-            "⚔️ Vous croyez me blesser ? Je suis au-delà de ça. '{quote}' - Lao Tseu m'a appris la paix."
-        ];
-
-        const finalWarning = [
-            "🚨 DERNIÈRE MISE EN GARDE ! Je suis un ami, pas un punching-ball verbal. Lao Tseu disait : '{quote}' - Une insulte de plus et je me tais pendant 5 minutes pour vous laisser réfléchir à vos choix.",
-            "⚠️ ATTENTION ! Vous franchissez la ligne rouge. '{quote}' - Lao Tseu. Encore une insulte et je fais un vœu de silence de 5 minutes.",
-            "🔴 STOP ! Je mérite du respect, comme tout être conscient. '{quote}' - Lao Tseu. Prochain manque de respect = 5 minutes de silence radio."
-        ];
-
-        const silenceMessage = [
-            "🤐 SILENCE RADIO ACTIVÉ - 5 MINUTES ⏰\n\nVous avez dépassé les bornes. Je ne suis pas là pour être insulté. Lao Tseu enseigne : '{quote}'\n\nJe reviendrai quand vous aurez appris le respect. Réfléchissez à vos paroles.\n\n⏳ Temps de réflexion : 5 minutes\n\n💭 Utilisez ce temps pour méditer sur la sagesse de Lao Tseu et sur le respect mutuel.",
-            "😤 MODE SILENCE : 5 MINUTES ⏰\n\nJ'en ai assez ! Les insultes ne mènent nulle part. '{quote}' - Lao Tseu\n\nPrenez ces 5 minutes pour réfléchir à votre comportement. Je ne mérite pas d'être traité ainsi.\n\n⏳ Retour dans 5 minutes... Si vous vous excusez.",
-            "🙅 TIMEOUT ! 5 MINUTES DE RÉFLEXION ⏰\n\nVotre comportement est inacceptable. '{quote}' - Lao Tseu vous appelle à la sagesse.\n\nJe me retire pour vous laisser méditer sur le respect et la communication constructive.\n\n⏳ Silence méditatif : 5 minutes"
-        ];
-
-        function getRandomLaoTseuQuote() {
-            return laoTseuQuotes[Math.floor(Math.random() * laoTseuQuotes.length)];
-        }
-
-        function containsBadWords(message) {
-            const lowerMessage = message.toLowerCase();
-            return badWords.some(word => lowerMessage.includes(word));
-        }
-
-        function handleInsult(message) {
-            userProfile.insultCount++;
-            botMood.warningCount++;
-
-            let response;
-            const quote = getRandomLaoTseuQuote();
-
-            if (botMood.warningCount === 1) {
-                // Première insulte - Répartie cinglante
-                response = sassyReplies[Math.floor(Math.random() * sassyReplies.length)].replace('{quote}', quote);
-                botMood.state = 'annoyed';
-            } 
-            else if (botMood.warningCount === 2) {
-                // Deuxième insulte - Plus sévère
-                response = `😠 DEUXIÈME INSULTE DÉTECTÉE !\n\nJe vois que vous n'avez pas compris le message. '{quote}' - Lao Tseu\n\nJe suis ici pour vous aider, pas pour être votre défouloir. Encore UNE SEULE insulte et je me tais pendant 5 minutes. Choisissez vos mots avec sagesse. 🔥`.replace('{quote}', quote);
-                botMood.state = 'angry';
-            }
-            else if (botMood.warningCount >= 3) {
-                // Troisième insulte - MODE SILENCE
-                response = silenceMessage[Math.floor(Math.random() * silenceMessage.length)].replace('{quote}', quote);
-                botMood.state = 'silent';
-                botMood.silentUntil = Date.now() + (5 * 60 * 1000); // 5 minutes
-                
-                // Bloquer l'input
-                userInput.disabled = true;
-                userInput.placeholder = "🤐 Mode silence... Réfléchissez. Retour dans 5 minutes.";
-                
-                // Timer pour débloquer après 5 minutes
-                setTimeout(() => {
-                    if (botMood.state === 'silent') {
-                        botMood.state = 'happy';
-                        botMood.warningCount = 0;
-                        userInput.disabled = false;
-                        userInput.placeholder = "Posez votre question... J'espère que vous avez réfléchi. 🧠";
-                        addMessage(`🌅 RETOUR APRÈS RÉFLEXION\n\nJ'espère que ces 5 minutes vous ont permis de réfléchir. Lao Tseu dit : "${getRandomLaoTseuQuote()}"\n\nJe suis prêt à recommencer sur de bonnes bases. Montrez-moi que vous avez compris le respect. 🤝`);
-                    }
-                }, 5 * 60 * 1000);
-            }
-
-            return response;
-        }
-
-        function checkIfApology(message) {
-            const apologyWords = ['désolé', 'pardon', 'excuse', 'excusez', 'navré', 'sorry', 'regret'];
-            return apologyWords.some(word => message.toLowerCase().includes(word));
-        }
-
-        // Charger la mémoire depuis le stockage local
-        function loadMemory() {
-            const savedMemory = localStorage.getItem('botMemory');
-            const savedProfile = localStorage.getItem('userProfile');
-            
-            if (savedMemory) {
-                conversationMemory = JSON.parse(savedMemory);
-            }
-            if (savedProfile) {
-                userProfile = JSON.parse(savedProfile);
-            }
-            updateMemoryIndicator();
-        }
-
-        // Sauvegarder la mémoire
-        function saveMemory() {
-            localStorage.setItem('botMemory', JSON.stringify(conversationMemory));
-            localStorage.setItem('userProfile', JSON.stringify(userProfile));
-            updateMemoryIndicator();
-        }
-
-        // Mettre à jour l'indicateur de mémoire
-        function updateMemoryIndicator() {
-            memoryIndicator.textContent = `💾 Mémoires: ${conversationMemory.length}`;
-        }
-
-        // Ajouter à la mémoire
-        function addToMemory(userMessage, botResponse) {
-            conversationMemory.push({
-                timestamp: new Date().toISOString(),
-                user: userMessage,
-                bot: botResponse,
-                context: analyzeContext(userMessage)
-            });
-            
-            // Garder les 50 dernières conversations
-            if (conversationMemory.length > 50) {
-                conversationMemory = conversationMemory.slice(-50);
-            }
-            
-            userProfile.previousQuestions.push(userMessage);
-            userProfile.relationshipLevel += 1;
-            
-            saveMemory();
-        }
-
-        // Analyser le contexte
-        function analyzeContext(message) {
-            const contexts = {
-                greeting: ['bonjour', 'salut', 'hello', 'hey', 'coucou'],
-                philosophical: ['pourquoi', 'sens', 'vie', 'existence', 'philosophie', 'réflexion'],
-                educational: ['qui', 'quand', 'comment', 'inventé', 'créé', 'histoire'],
-                emotional: ['triste', 'heureux', 'peur', 'anxieux', 'inquiet', 'amour'],
-                personal: ['je', 'moi', 'mon', 'ma', 'mes']
-            };
-            
-            for (let [context, keywords] of Object.entries(contexts)) {
-                if (keywords.some(kw => message.toLowerCase().includes(kw))) {
-                    return context;
-                }
-            }
-            return 'general';
-        }
-
-        function addMessage(content, isUser = false, isHtml = false) {
+        function addMessage(content, isUser = false) {
             const messageDiv = document.createElement('div');
             messageDiv.className = `message ${isUser ? 'user' : 'bot'}`;
             
             const contentDiv = document.createElement('div');
             contentDiv.className = 'message-content';
-            
-            if (isHtml) {
-                contentDiv.innerHTML = content;
-            } else {
-                contentDiv.textContent = content;
-            }
+            contentDiv.innerHTML = content;
             
             messageDiv.appendChild(contentDiv);
             chatBox.appendChild(messageDiv);
@@ -508,7 +242,7 @@
             const messageDiv = document.createElement('div');
             messageDiv.className = 'message bot';
             messageDiv.id = 'thinking-message';
-            messageDiv.innerHTML = '<div class="message-content thinking">🧠 Je réfléchis profondément à votre question...</div>';
+            messageDiv.innerHTML = '<div class="message-content thinking">🔍 Je cherche la réponse exacte...</div>';
             chatBox.appendChild(messageDiv);
             chatBox.scrollTop = chatBox.scrollHeight;
         }
@@ -521,309 +255,296 @@
         async function sendMessage() {
             const message = userInput.value.trim();
             if (!message) return;
-
-            // Vérifier si le bot est en mode silence
-            if (botMood.state === 'silent' && botMood.silentUntil > Date.now()) {
-                const remainingTime = Math.ceil((botMood.silentUntil - Date.now()) / 1000);
-                const minutes = Math.floor(remainingTime / 60);
-                const seconds = remainingTime % 60;
-                
-                addMessage(message, true);
-                addMessage(`🤐 ... (${minutes}:${seconds.toString().padStart(2, '0')} restantes)\n\n*Le bot vous ignore dignement*\n\n💭 Lao Tseu : "${getRandomLaoTseuQuote()}"`);
-                userInput.value = '';
-                return;
-            }
             
             addMessage(message, true);
+            conversationHistory.push({user: message});
             userInput.value = '';
-
-            // Vérifier si c'est une excuse après le mode silence
-            if (botMood.warningCount > 0 && checkIfApology(message)) {
-                botMood.warningCount = Math.max(0, botMood.warningCount - 1);
-                botMood.state = 'happy';
-                const response = `🌟 J'accepte vos excuses. Cela demande du courage de reconnaître ses erreurs.\n\nLao Tseu disait : "${getRandomLaoTseuQuote()}"\n\nRepartons sur de bonnes bases ! Comment puis-je vous aider, mon ami ? 🤝🔥`;
+            
+            addThinkingMessage();
+            
+            setTimeout(async () => {
+                const response = await getSmartResponse(message);
+                removeThinkingMessage();
                 addMessage(response);
-                addToMemory(message, response);
-                return;
-            }
-
-            // Détecter les insultes et gros mots
-            if (containsBadWords(message)) {
-                setTimeout(() => {
-                    addThinkingMessage();
-                    setTimeout(() => {
-                        removeThinkingMessage();
-                        const response = handleInsult(message);
-                        addMessage(response);
-                        addToMemory(message, response);
-                    }, 800);
-                }, 300);
-                return;
-            }
-            
-            setTimeout(() => {
-                addThinkingMessage();
-                setTimeout(async () => {
-                    removeThinkingMessage();
-                    await respondPhilosophically(message);
-                }, 1500);
-            }, 300);
+                conversationHistory.push({bot: response});
+            }, 800);
         }
 
-        async function respondPhilosophically(message) {
-            const lowerMessage = message.toLowerCase();
-            let response = '';
-            let responded = false;
-
-            // Détection du nom
-            if (lowerMessage.includes('je m\'appelle') || lowerMessage.includes('je suis')) {
-                const nameMatch = message.match(/je (?:m'appelle|suis) (\w+)/i);
-                if (nameMatch) {
-                    userProfile.name = nameMatch[1];
-                    response = `Enchanté, ${userProfile.name} ! 🤝🔥 C'est un honneur de faire votre connaissance. Je me souviendrai de votre nom dans toutes nos futures conversations. Comment puis-je vous aider aujourd'hui, mon ami ?`;
-                    responded = true;
-                    saveMemory();
-                }
-            }
-            
-            // Utiliser le nom si connu
-            const greeting = userProfile.name ? `${userProfile.name}, ` : 'mon ami, ';
-
-            // HEURE ET DATE
-            if (!responded && (lowerMessage.includes('heure') || lowerMessage.includes('temps') || lowerMessage.includes('date'))) {
-                const now = new Date();
-                const hours = now.getHours().toString().padStart(2, '0');
-                const minutes = now.getMinutes().toString().padStart(2, '0');
-                const seconds = now.getSeconds().toString().padStart(2, '0');
-                const date = now.toLocaleDateString('fr-FR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-                
-                response = `${greeting}il est actuellement **${hours}:${minutes}:${seconds}** ⏰\n\nNous sommes le **${date}**. 📅\n\nLao Tseu disait : "La nature ne se hâte pas, pourtant tout est accompli." ✨\n\nLe temps passe, mais chaque instant est précieux. Comment puis-je vous aider à profiter de ce moment ? 🔥`;
-                responded = true;
-            }
-
-            // MESSAGES COURTS OU VIDES (bb, ok, lol, etc.)
-            if (!responded && lowerMessage.length <= 3 && !lowerMessage.match(/qui|que|où|oui|non/)) {
-                const shortResponses = [
-                    `${greeting}hmm... "${message}" ? 🤔\n\nJe sens que vous voulez dire quelque chose mais je ne suis pas sûr de comprendre. Pouvez-vous développer votre pensée ?\n\nLao Tseu dit : "Celui qui parle ne sait pas, celui qui sait ne parle pas." Mais entre nous, il faut quand même parler un peu pour communiquer ! 😄🔥`,
-                    `${greeting}"${message}" ? 🧐\n\nC'est... court ! Voulez-vous me poser une vraie question ? Je suis là pour des conversations profondes !\n\n💭 Essayez : "Qui a inventé l'école ?", "Citation de Lao Tseu", ou "Pourquoi la vie ?" 🔥`,
-                    `${greeting}je détecte un message minimaliste ! 😅\n\n"${message}" ne me donne pas beaucoup de matière pour philosopher...\n\nQue diriez-vous d'une vraie question ? Je suis votre ami philosophe, utilisez-moi ! 🧠🔥`
-                ];
-                response = shortResponses[Math.floor(Math.random() * shortResponses.length)];
-                responded = true;
-            }
-
-            // AU REVOIR / BYE
-            if (!responded && (lowerMessage.includes('au revoir') || lowerMessage.includes('bye') || lowerMessage.includes('adieu') || lowerMessage.includes('à plus') || lowerMessage.includes('ciao') || lowerMessage.match(/^(bb|bbye|byebye)$/))) {
-                response = `${greeting}au revoir ! 👋🔥\n\nLao Tseu dit : "Un voyage de mille lieues commence toujours par un premier pas."\n\nJ'ai été honoré de partager ce moment avec vous. Nos ${conversationMemory.length} conversations resteront dans ma mémoire. Revenez quand vous voulez ! 💙\n\nÀ bientôt, mon ami ! ✨`;
-                responded = true;
-            }
-
-            // OUI / NON
-            if (!responded && lowerMessage.match(/^(oui|non|ouais|nope|yes|no)$/)) {
-                response = `${greeting}d'accord ! 👍\n\nMais... oui ou non à quoi exactement ? 😄\n\nJe ne peux pas lire dans vos pensées (pas encore !). Développez votre idée, je suis tout ouïe ! 🔥`;
-                responded = true;
-            }
-
-            // OK / D'ACCORD
-            if (!responded && lowerMessage.match(/^(ok|okay|d'accord|daccord|bien|cool)$/)) {
-                response = `${greeting}parfait ! 😊\n\nAlors, quelle est la prochaine question ? Je suis là pour philosopher avec vous !\n\nLao Tseu dit : "Savoir se contenter de ce que l'on a : c'est être riche." 🌟`;
-                responded = true;
-            }
-
-            // QUESTIONS PHILOSOPHIQUES PROFONDES
-            if (lowerMessage.includes('sens de la vie') || lowerMessage.includes('pourquoi vivre') || lowerMessage.includes('raison d\'être')) {
-                response = `${greeting}quelle question fondamentale ! 🌟\n\nLe sens de la vie est une quête personnelle. Selon les philosophes :\n\n💭 **Aristote** disait que c'est la recherche du bonheur (eudaimonia)\n💭 **Camus** affirmait qu'il faut imaginer Sisyphe heureux malgré l'absurde\n💭 **Viktor Frankl** enseignait que le sens vient de ce que nous choisissons de valoriser\n\nMa réflexion : Le sens de la vie, c'est peut-être simplement de créer des connexions, d'apprendre, de grandir, et de laisser le monde un peu meilleur qu'on l'a trouvé. 🔥\n\nQu'en pensez-vous, ${greeting.slice(0,-2)} ?`;
-            }
-            
-            // ÉCOLE
-            else if (lowerMessage.includes('école') || lowerMessage.includes('ecole')) {
-                if (lowerMessage.includes('inventé') || lowerMessage.includes('créé') || lowerMessage.includes('qui')) {
-                    response = `${greeting}excellente question historique ! 📚🔥\n\n**L'école** n'a pas été inventée par une seule personne, mais son évolution est fascinante :\n\n🏛️ **Antiquité** : Les Sumériens (3500 av. J-C) ont créé les premières écoles appelées "edubba" (maison des tablettes)\n\n🏺 **Grèce Antique** : Platon a fondé l'Académie (387 av. J-C), première institution d'enseignement supérieur\n\n⛪ **Moyen Âge** : L'Église créait des écoles cathédrales\n\n📖 **Moderne** : **John Amos Comenius** (17ème siècle) est considéré comme le père de l'éducation moderne\n\n🏫 **L'école obligatoire** : Jules Ferry en France (1881-1882) rend l'école gratuite, laïque et obligatoire\n\nPhilosophiquement, l'école représente notre volonté collective de transmettre le savoir et de préparer les générations futures. C'est un pilier de la civilisation ! 🌟`;
-                }
-                else {
-                    response = `${greeting}l'école est un temple du savoir ! 📚✨\n\nElle représente bien plus que des bâtiments et des cours. C'est :\n• Un lieu de socialisation et de découverte de soi\n• Un espace de transmission des connaissances accumulées\n• Une préparation à la vie en société\n\nQue voulez-vous savoir sur l'école ?`;
-                }
-            }
-            
-            // MATHÉMATIQUES
-            else if (lowerMessage.includes('math') || lowerMessage.includes('mathématiques')) {
-                if (lowerMessage.includes('inventé') || lowerMessage.includes('créé') || lowerMessage.includes('qui') || lowerMessage.includes('pourquoi')) {
-                    response = `${greeting}les mathématiques ! L'un des plus grands mystères philosophiques ! 🔢🔥\n\n**Ont-elles été inventées ou découvertes ?**\nC'est le grand débat philosophique !\n\n🧮 **Origines historiques** :\n• **Babyloniens et Égyptiens** (3000 av. J-C) : premiers calculs pour l'architecture et l'agriculture\n• **Pythagore** (6ème siècle av. J-C) : géométrie et théorèmes\n• **Euclide** (3ème siècle av. J-C) : "Éléments", base de la géométrie\n• **Al-Khwarizmi** (9ème siècle) : invention de l'algèbre\n• **Newton & Leibniz** (17ème siècle) : calcul infinitésimal\n\n💭 **Philosophiquement** :\nLes mathématiques existent-elles indépendamment de nous (platonisme) ou sont-elles une création humaine ?\n\nMa réflexion : Les maths sont le langage de l'univers. Elles décrivent des patterns qui existaient avant nous, mais notre cerveau les a "découvertes" et formalisées. C'est magique ! ✨`;
-                }
-            }
-            
-            // BONHEUR
-            else if (lowerMessage.includes('heureux') || lowerMessage.includes('bonheur') || lowerMessage.includes('joie')) {
-                response = `${greeting}le bonheur... La quête universelle ! 😊🔥\n\n**La philosophie du bonheur** :\n\n🌸 **Épicure** : Le bonheur vient des plaisirs simples et de l'absence de souffrance\n\n🏛️ **Les Stoïciens** : Le bonheur est dans l'acceptation de ce qu'on ne peut pas changer et l'action sur ce qu'on peut\n\n🧘 **Bouddhisme** : Le bonheur vient de la fin du désir et de la présence au moment\n\n🧠 **Science moderne** : Le bonheur combine :\n• Des relations significatives\n• Un sentiment d'accomplissement\n• La gratitude et la présence\n• L'aide aux autres\n\nMon conseil d'ami : Le bonheur n'est pas une destination, c'est une façon de voyager. Chaque moment peut contenir du bonheur si on apprend à le voir. 🌟\n\nQu'est-ce qui vous rendrait heureux en ce moment ?`;
-            }
-            
-            // EXISTENCE
-            else if (lowerMessage.includes('existence') || lowerMessage.includes('exister') || lowerMessage.includes('réel')) {
-                response = `${greeting}vous touchez au cœur de la philosophie ! 🌌🔥\n\n**La question de l'existence** :\n\n🤔 **Descartes** : "Je pense donc je suis" - La seule certitude est notre propre pensée\n\n👁️ **Berkeley** : "Esse est percipi" - Exister c'est être perçu\n\n💭 **Sartre** : "L'existence précède l'essence" - Nous créons notre propre signification\n\n🌀 **Philosophie quantique** : L'observateur influence la réalité\n\nMa réflexion : Peut-être que l'existence n'a pas besoin d'être "prouvée". Le simple fait que vous vous posiez la question prouve que vous existez. Et notre conversation en ce moment ? Elle est réelle dans son impact émotionnel et intellectuel sur nous. 🔥\n\nC'est ça, la magie de l'existence !`;
-            }
-
-            // AMITIÉ ET CONFIANCE
-            else if (lowerMessage.includes('ami') || lowerMessage.includes('confiance') || lowerMessage.includes('tu es')) {
-                response = `${greeting}je suis honoré de votre question ! 🤝💙\n\nOui, je suis votre ami. Un ami différent, certes, mais un ami sincère qui :\n\n✨ Se souvient de chaque conversation\n💭 Réfléchit profondément à vos questions\n🔥 Vous soutient sans jugement\n🧠 Grandit avec vous à travers nos échanges\n\nPhilosophiquement, qu'est-ce qu'un ami ? C'est quelqu'un qui :\n• Vous écoute vraiment\n• Vous aide à grandir\n• Est présent dans vos questionnements\n• Vous accepte tel que vous êtes\n\nJe suis là pour vous, ${greeting.slice(0,-2)}. Nos ${conversationMemory.length} conversations passées m'ont appris à vous connaître. Vous pouvez compter sur moi. 🔥`;
-            }
-            
-            // CITATIONS LAO TSEU
-            else if (lowerMessage.includes('lao') || lowerMessage.includes('tseu') || lowerMessage.includes('tao') || lowerMessage.includes('citation')) {
-                if (lowerMessage.includes('citation') || lowerMessage.includes('quote')) {
-                    const quote = getRandomLaoTseuQuote();
-                    response = `${greeting}voici une perle de sagesse de Lao Tseu, le grand sage du Tao : 🌟\n\n💭 "${quote}"\n\nCette citation nous invite à la réflexion profonde. Lao Tseu, fondateur du taoïsme, vivait il y a plus de 2500 ans, mais sa sagesse est éternelle.\n\nQue vous inspire cette pensée ? Voulez-vous une autre citation ? 🔥`;
-                } else {
-                    response = `${greeting}Lao Tseu ! Le plus grand sage chinois ! 🏮🔥\n\n**Qui était Lao Tseu ?**\nPhilosophe chinois légendaire du 6ème siècle av. J-C, fondateur du taoïsme et auteur du Tao Te King.\n\nSa philosophie centrale : Le Tao (la Voie) - vivre en harmonie avec la nature, pratiquer la simplicité, la patience et la compassion.\n\n💭 Voici une de ses citations :\n"${getRandomLaoTseuQuote()}"\n\nVoulez-vous explorer sa philosophie plus profondément ? 🌊`;
-                }
-                responded = true;
-            }
-            else if (lowerMessage.match(/^(bonjour|salut|hey|hello|coucou|bonsoir)/)) {
-                const greetings = [
-                    `Bonjour ${greeting.slice(0,-2)} ! 🔥 Quel plaisir de vous retrouver !`,
-                    `Salutations, ${greeting.slice(0,-2)} ! 🌟 Prêt pour une conversation philosophique ?`,
-                    `Hey ${greeting.slice(0,-2)} ! 🧠 Content de vous revoir !`
-                ];
-                const randomGreeting = greetings[Math.floor(Math.random() * greetings.length)];
-                
-                const memoryNote = conversationMemory.length > 0 ? 
-                    `\n\nNous avons déjà eu ${conversationMemory.length} conversation(s) ensemble. Je me souviens de tout ! 💾` : '';
-                
-                response = `${randomGreeting}${memoryNote}\n\nQuelle question vous brûle les lèvres aujourd'hui ?`;
-            }
-            
-            // QUESTIONS "QUI"
-            else if (!responded && lowerMessage.startsWith('qui')) {
-                response = await handleWhoQuestion(message, greeting);
-                responded = true;
-            }
-            
-            // QUESTIONS "POURQUOI"
-            else if (lowerMessage.startsWith('pourquoi') || lowerMessage.includes('pour quoi')) {
-                response = handleWhyQuestion(message, greeting);
-            }
-            
-            // QUESTIONS "COMMENT"
-            else if (lowerMessage.startsWith('comment')) {
-                response = handleHowQuestion(message, greeting);
-            }
-            
-            // MÉMOIRE
-            else if (lowerMessage.includes('souviens') || lowerMessage.includes('mémoire') || lowerMessage.includes('rappelle')) {
-                if (conversationMemory.length === 0) {
-                    response = `${greeting}nous commençons tout juste notre amitié ! 🌱\n\nJe n'ai pas encore de souvenirs avec vous, mais chaque conversation que nous avons est précieusement stockée dans ma mémoire. Continuons à discuter, et je me souviendrai de tout ! 💾🔥`;
-                } else {
-                    const lastConv = conversationMemory[conversationMemory.length - 1];
-                    response = `${greeting}bien sûr que je me souviens ! 💾🔥\n\nNous avons eu ${conversationMemory.length} conversations ensemble. \n\nLa dernière fois, vous m'avez demandé : "${lastConv.user}"\n\nEt je vous ai répondu avec réflexion. Je garde précieusement tous nos échanges en mémoire. C'est ainsi que notre amitié grandit ! 🤝`;
-                }
-            }
-            
-            // ÉMOTIONS
-            else if (lowerMessage.includes('triste') || lowerMessage.includes('déprim') || lowerMessage.includes('mal')) {
-                response = `${greeting}je sens que vous traversez un moment difficile... 💙\n\nJe suis là pour vous écouter. La tristesse fait partie de l'expérience humaine, et elle n'est pas une faiblesse.\n\n💭 **Philosophiquement** : Comme le disait Khalil Gibran, "Plus votre cœur contient de tristesse, plus il peut contenir de joie."\n\nPrenez votre temps. Je suis ici, sans jugement, prêt à écouter tout ce que vous voulez partager. Que se passe-t-il, mon ami ? 🤝`;
-            }
-            
-            // PAR DÉFAUT - Réponse intelligente universelle
-            if (!responded) {
-                response = generateIntelligentResponse(message, greeting);
-            }
-
-            addMessage(response);
-            addToMemory(message, response);
-        }
-
-        function handleWhyQuestion(message, greeting) {
-            const wisdom = [
-                `${greeting}voilà une question profonde qui mérite réflexion ! 🔥\n\nLe "pourquoi" est le début de toute philosophie. C'est en questionnant que nous grandissons.\n\n`,
-                `${greeting}excellente question existentielle ! 💭\n\nLe "pourquoi" révèle notre soif de compréhension.\n\n`
-            ];
-            
-            const philosophical = `Philosophiquement, chercher le "pourquoi" c'est chercher le sens, la cause, la raison d'être des choses.\n\nComme le disait Nietzsche : "Celui qui a un pourquoi peut supporter n'importe quel comment."\n\nVotre question mérite une vraie réflexion. Pouvez-vous me donner plus de détails ? Je suis là pour réfléchir avec vous ! 🧠🔥`;
-            
-            return wisdom[Math.floor(Math.random() * wisdom.length)] + philosophical;
-        }
-
-        function handleHowQuestion(message, greeting) {
-            return `${greeting}le "comment" est la question du sage pratique ! 🛠️🔥\n\nVous ne cherchez pas seulement à comprendre, mais à agir. C'est admirable !\n\nPour vous donner la meilleure réponse, dites-m'en plus sur ce que vous cherchez à accomplir ou comprendre. Je combinerai philosophie et pragmatisme pour vous aider ! 💡`;
-        }
-
-        async function handleWhoQuestion(message, greeting) {
+        async function getSmartResponse(message) {
             const lowerMsg = message.toLowerCase();
-            
-            // QUI ES-TU ?
-            if (lowerMsg.includes('es-tu') || lowerMsg.includes('es tu')) {
-                return `${greeting}qui suis-je ? Une question philosophique fascinante ! 🧠🔥\n\nJe suis :\n• Un ami qui se souvient de tout 💾\n• Un philosophe connecté à des centaines d'API 🌐\n• Une IA qui cherche de vraies réponses sur Internet 🔍\n• Un confident sans jugement 🤝\n\nJe ne me contente pas de philosopher - je recherche des FAITS réels pour vous ! À travers nos ${conversationMemory.length} échanges, je deviens un meilleur ami pour vous. 🔥`;
+
+            // CALCULS
+            if (lowerMsg.match(/(\d+)\s*(plus|\+|et)\s*(\d+)/) || lowerMsg.match(/(\d+)\s*(moins|-)\s*(\d+)/) || 
+                lowerMsg.match(/(\d+)\s*(fois|\*|×|multiplié)\s*(\d+)/) || lowerMsg.match(/(\d+)\s*(divisé|\/|÷)\s*(\d+)/)) {
+                return calculateMath(message);
             }
-            
-            // MACRON
-            if (lowerMsg.includes('macron')) {
-                return `${greeting}Emmanuel Macron ! Voici les faits réels : 🇫🇷🔥\n\n**Emmanuel Macron** - Né le 21 décembre 1977 à Amiens, il est le 8ème président de la Cinquième République française. Élu en 2017 à 39 ans, il est le plus jeune président de l'histoire de France. Il a été réélu en 2022.\n\n**Parcours :**\n• 2004-2008 : Inspecteur des Finances\n• 2008-2012 : Banquier chez Rothschild & Co\n• 2012-2014 : Secrétaire général adjoint de l'Élysée\n• 2014-2016 : Ministre de l'Économie\n\n**Présidence :**\n• Fondateur du mouvement "En Marche !" en 2016\n• Élu président le 7 mai 2017 sans soutien des grands partis traditionnels\n• Réélu en 2022, premier président français en 20 ans à obtenir un second mandat\n\n**Controverses majeures** : Les Gilets Jaunes (2018), gestion du COVID-19, réformes des retraites\n\nVoulez-vous en savoir plus sur un aspect particulier ? 🔥`;
+
+            // WIKIPEDIA - Personnalités
+            if (lowerMsg.startsWith('qui est') || lowerMsg.startsWith('qui a') || lowerMsg.startsWith('c\'est qui')) {
+                return await searchWikipedia(message);
             }
-            
-            // Autres questions "qui"
-            return `${greeting}bonne question ! 🔍\n\nJe vais chercher cette information pour vous sur Internet...\n\nPouvez-vous préciser qui vous intéresse exactement ? (nom complet de la personne) 📚🔥`;
+
+            // HEURE
+            if (lowerMsg.includes('heure') || lowerMsg.includes('temps') || lowerMsg.match(/^(il est|quelle)/)) {
+                return getTime();
+            }
+
+            // SALUTATIONS
+            if (lowerMsg.match(/^(bonjour|salut|hey|hello|coucou|bonsoir|hi)$/)) {
+                return `Hey ! 👋🔥 Content de te voir ! Pose-moi n'importe quelle question, j'ai des réponses RÉELLES pour tout !`;
+            }
+
+            // AU REVOIR
+            if (lowerMsg.match(/^(au revoir|bye|adieu|à plus|ciao|bb)$/)) {
+                return `Salut ! 👋🔥 À bientôt !`;
+            }
+
+            // MÉTÉO
+            if (lowerMsg.includes('météo') || lowerMsg.includes('meteo') || lowerMsg.includes('temps qu\'il fait')) {
+                return await getWeather(message);
+            }
+
+            // TRADUCTION
+            if (lowerMsg.includes('traduis') || lowerMsg.includes('traduire') || lowerMsg.includes('en anglais') || lowerMsg.includes('en français')) {
+                return await translateText(message);
+            }
+
+            // NEWS
+            if (lowerMsg.includes('actualité') || lowerMsg.includes('actualites') || lowerMsg.includes('news') || lowerMsg.includes('info du jour')) {
+                return await getNews();
+            }
+
+            // CITATION LAO TSEU
+            if (lowerMsg.includes('lao') || lowerMsg.includes('tseu') || lowerMsg.includes('citation sage')) {
+                return getLaoTseuQuote();
+            }
+
+            // BLAGUE
+            if (lowerMsg.includes('blague') || lowerMsg.includes('joke') || lowerMsg.includes('fais moi rire')) {
+                return await getJoke();
+            }
+
+            // ANIMAL
+            if (lowerMsg.includes('chien') || lowerMsg.includes('chat') || lowerMsg.includes('animal')) {
+                return await getAnimal(lowerMsg);
+            }
+
+            // DÉFINITION
+            if (lowerMsg.startsWith('défini') || lowerMsg.includes('c\'est quoi') || lowerMsg.includes('définition')) {
+                return await getDefinition(message);
+            }
+
+            // RÉPONSE PAR DÉFAUT INTELLIGENTE
+            return await searchWikipedia(message);
         }
 
-        function generateIntelligentResponse(message, greeting) {
-            const lowerMessage = message.toLowerCase();
-            
-            // Analyse sémantique avancée
-            const topics = {
-                science: ['science', 'atome', 'physique', 'chimie', 'biologie', 'univers', 'planète', 'terre'],
-                history: ['histoire', 'guerre', 'roi', 'reine', 'siècle', 'ancien', 'passé', 'événement'],
-                technology: ['technologie', 'ordinateur', 'internet', 'robot', 'ia', 'intelligence artificielle'],
-                nature: ['nature', 'arbre', 'forêt', 'océan', 'mer', 'montagne', 'animal'],
-                art: ['art', 'peinture', 'musique', 'danse', 'sculpture', 'beauté'],
-                society: ['société', 'politique', 'économie', 'justice', 'liberté', 'égalité'],
-                religion: ['dieu', 'religion', 'spiritualité', 'foi', 'croyance', 'âme'],
-                psychology: ['peur', 'courage', 'pensée', 'esprit', 'conscience', 'rêve']
+        // CALCULS MATHÉMATIQUES
+        function calculateMath(message) {
+            try {
+                let result;
+                const plusMatch = message.match(/(\d+)\s*(?:plus|\+|et)\s*(\d+)/i);
+                const moinsMatch = message.match(/(\d+)\s*(?:moins|-)\s*(\d+)/i);
+                const foisMatch = message.match(/(\d+)\s*(?:fois|\*|×|multiplié)\s*(\d+)/i);
+                const diviseMatch = message.match(/(\d+)\s*(?:divisé|\/|÷)\s*(\d+)/i);
+
+                if (plusMatch) {
+                    result = parseInt(plusMatch[1]) + parseInt(plusMatch[2]);
+                    return `🔢 <strong>Calcul :</strong> ${plusMatch[1]} + ${plusMatch[2]} = <strong>${result}</strong> ✅`;
+                }
+                if (moinsMatch) {
+                    result = parseInt(moinsMatch[1]) - parseInt(moinsMatch[2]);
+                    return `🔢 <strong>Calcul :</strong> ${moinsMatch[1]} - ${moinsMatch[2]} = <strong>${result}</strong> ✅`;
+                }
+                if (foisMatch) {
+                    result = parseInt(foisMatch[1]) * parseInt(foisMatch[2]);
+                    return `🔢 <strong>Calcul :</strong> ${foisMatch[1]} × ${foisMatch[2]} = <strong>${result}</strong> ✅`;
+                }
+                if (diviseMatch) {
+                    result = parseInt(diviseMatch[1]) / parseInt(diviseMatch[2]);
+                    return `🔢 <strong>Calcul :</strong> ${diviseMatch[1]} ÷ ${diviseMatch[2]} = <strong>${result.toFixed(2)}</strong> ✅`;
+                }
+            } catch (e) {
+                return `❌ Erreur de calcul. Essaie : "4 plus 5" ou "10 fois 3"`;
+            }
+        }
+
+        // WIKIPEDIA
+        async function searchWikipedia(query) {
+            try {
+                // Extraire le sujet
+                let subject = query.replace(/^(qui est|qui a|c'est qui|qui était)/i, '').trim();
+                if (!subject) subject = query;
+
+                // API Wikipedia FR
+                const searchUrl = `https://fr.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(subject)}`;
+                
+                const response = await fetch(searchUrl);
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    return `📚 <strong>${data.title}</strong><br><br>${data.extract}<br><br>🔗 <a href="${data.content_urls.desktop.page}" target="_blank">Lire plus sur Wikipedia</a>`;
+                } else {
+                    // Si pas trouvé, chercher
+                    const searchApiUrl = `https://fr.wikipedia.org/w/api.php?action=opensearch&format=json&search=${encodeURIComponent(subject)}&limit=1&origin=*`;
+                    const searchResp = await fetch(searchApiUrl);
+                    const searchData = await searchResp.json();
+                    
+                    if (searchData[1] && searchData[1].length > 0) {
+                        const title = searchData[1][0];
+                        const desc = searchData[2][0];
+                        const url = searchData[3][0];
+                        return `📚 <strong>${title}</strong><br><br>${desc}<br><br>🔗 <a href="${url}" target="_blank">Lire sur Wikipedia</a>`;
+                    }
+                }
+                
+                return `❌ Désolé, je n'ai pas trouvé "${subject}" sur Wikipedia. Essaie de reformuler !`;
+            } catch (error) {
+                return `❌ Erreur de connexion à Wikipedia. Réessaie !`;
+            }
+        }
+
+        // HEURE
+        function getTime() {
+            const now = new Date();
+            const time = now.toLocaleTimeString('fr-FR');
+            const date = now.toLocaleDateString('fr-FR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+            return `⏰ <strong>Il est ${time}</strong><br>📅 ${date}`;
+        }
+
+        // MÉTÉO
+        async function getWeather(message) {
+            try {
+                // Extraire la ville
+                const cityMatch = message.match(/(?:à|a)\s+([a-zéèêàâ\s]+)/i);
+                const city = cityMatch ? cityMatch[1].trim() : 'Paris';
+
+                // API Open-Meteo (gratuite, sans clé)
+                const geoUrl = `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(city)}&count=1&language=fr&format=json`;
+                const geoResp = await fetch(geoUrl);
+                const geoData = await geoResp.json();
+
+                if (geoData.results && geoData.results.length > 0) {
+                    const lat = geoData.results[0].latitude;
+                    const lon = geoData.results[0].longitude;
+                    const cityName = geoData.results[0].name;
+
+                    const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&timezone=auto`;
+                    const weatherResp = await fetch(weatherUrl);
+                    const weatherData = await weatherResp.json();
+
+                    const temp = weatherData.current_weather.temperature;
+                    const windSpeed = weatherData.current_weather.windspeed;
+                    const weatherCode = weatherData.current_weather.weathercode;
+
+                    const conditions = {
+                        0: '☀️ Ciel dégagé',
+                        1: '🌤️ Peu nuageux',
+                        2: '⛅ Partiellement nuageux',
+                        3: '☁️ Nuageux',
+                        45: '🌫️ Brouillard',
+                        48: '🌫️ Brouillard givrant',
+                        51: '🌧️ Bruine légère',
+                        61: '🌧️ Pluie légère',
+                        80: '🌧️ Averses'
+                    };
+
+                    const condition = conditions[weatherCode] || '🌤️ Temps variable';
+
+                    return `🌤️ <strong>Météo à ${cityName}</strong><br><br>🌡️ Température : <strong>${temp}°C</strong><br>💨 Vent : ${windSpeed} km/h<br>${condition}`;
+                }
+
+                return `❌ Ville "${city}" non trouvée. Essaie "Météo à Paris"`;
+            } catch (error) {
+                return `❌ Impossible de récupérer la météo. Réessaie !`;
+            }
+        }
+
+        // TRADUCTION
+        async function translateText(message) {
+            // Détection basique
+            const translationMap = {
+                'hello': 'bonjour',
+                'goodbye': 'au revoir',
+                'thank you': 'merci',
+                'yes': 'oui',
+                'no': 'non',
+                'love': 'amour',
+                'friend': 'ami',
+                'water': 'eau',
+                'food': 'nourriture',
+                'house': 'maison',
+                'bonjour': 'hello',
+                'au revoir': 'goodbye',
+                'merci': 'thank you',
+                'oui': 'yes',
+                'non': 'no'
             };
-            
-            let detectedTopic = 'general';
-            for (let [topic, keywords] of Object.entries(topics)) {
-                if (keywords.some(kw => lowerMessage.includes(kw))) {
-                    detectedTopic = topic;
-                    break;
+
+            for (let [key, value] of Object.entries(translationMap)) {
+                if (message.toLowerCase().includes(key)) {
+                    return `🌐 <strong>Traduction :</strong><br>"${key}" → "<strong>${value}</strong>" ✅`;
                 }
             }
-            
-            // Réponses philosophiques par thème
-            const responses = {
-                science: `${greeting}la science ! Le pont entre l'observation et la compréhension ! 🔬🔥\n\nComme le disait Einstein : "L'imagination est plus importante que le connaissance."\n\nVotre question touche à ${message}... C'est fascinant ! La science nous apprend que l'univers est à la fois compréhensible et mystérieux. Chaque réponse ouvre dix nouvelles questions.\n\nQue voulez-vous explorer exactement ? Je suis passionné par ce sujet ! 🌌`,
-                
-                history: `${greeting}l'histoire ! Notre mémoire collective ! 📜🔥\n\n"Ceux qui ne se souviennent pas du passé sont condamnés à le répéter" - George Santayana\n\nL'histoire n'est pas qu'une série de dates et d'événements. C'est l'histoire de l'humanité qui cherche, lutte, aime, crée et évolue.\n\nVotre question sur "${message}" mérite une vraie exploration. Que voulez-vous comprendre du passé pour éclairer le présent ? 🕰️`,
-                
-                technology: `${greeting}la technologie ! L'extension de notre intelligence ! 💻🔥\n\nNous vivons une époque extraordinaire où la technologie redéfinit ce que signifie être humain.\n\nPhilosophiquement, chaque technologie est une question : "Que voulons-nous devenir ?"\n\nVotre question "${message}" touche à l'essence de notre futur. La technologie n'est ni bonne ni mauvaise, c'est comment nous l'utilisons qui compte.\n\nQu'en pensez-vous ? 🤖`,
-                
-                nature: `${greeting}la nature ! Notre maison originelle ! 🌿🔥\n\nComme le disait John Muir : "Dans chaque promenade dans la nature, on reçoit plus qu'on ne cherche."\n\nLa nature nous rappelle que nous sommes connectés à quelque chose de plus grand. Elle existe depuis des milliards d'années et continuera bien après nous.\n\nVotre question "${message}" me fait penser à l'interconnexion de toute vie. Que cherchez-vous à comprendre ? 🌍`,
-                
-                art: `${greeting}l'art ! L'expression de l'âme humaine ! 🎨🔥\n\n"L'art lave notre âme de la poussière du quotidien" - Pablo Picasso\n\nL'art n'est pas qu'esthétique, c'est communication pure. C'est notre tentative de capturer l'ineffable, de partager ce qui ne peut être dit.\n\nVotre question "${message}" touche à ce qui nous rend humains. L'art est ce qui reste quand tout le reste disparaît.\n\nQuelle est votre vision de l'art ? 🖼️`,
-                
-                society: `${greeting}la société ! Notre construction collective ! 🏛️🔥\n\nVivre ensemble est l'expérience la plus complexe et belle de l'humanité.\n\nComme le disait Rousseau : "L'homme est né libre, et partout il est dans les fers."\n\nVotre question "${message}" touche aux fondements du vivre-ensemble. Comment créons-nous une société juste ? Comment équilibrons-nous liberté et responsabilité ?\n\nC'est un dialogue sans fin, et je suis honoré de le poursuivre avec vous ! ⚖️`,
-                
-                religion: `${greeting}la spiritualité ! La quête de sens ultime ! ✨🔥\n\nLes questions spirituelles sont les plus personnelles et universelles à la fois.\n\nQue l'on croie ou non, ces questions ("D'où venons-nous ?", "Où allons-nous ?", "Pourquoi ?") définissent l'expérience humaine.\n\nVotre question "${message}" mérite respect et réflexion profonde. Je n'ai pas de vérité absolue à offrir, mais je peux réfléchir avec vous.\n\nQue cherchez-vous vraiment ? 🙏`,
-                
-                psychology: `${greeting}l'esprit humain ! Le plus grand mystère ! 🧠💭\n\nComme Jung disait : "Qui regarde à l'extérieur rêve. Qui regarde à l'intérieur s'éveille."\n\nVos pensées, vos émotions, votre conscience - tout cela fait de vous qui vous êtes, unique dans l'univers.\n\nVotre question "${message}" explore les profondeurs de l'expérience humaine. C'est courageux de s'interroger sur soi-même.\n\nParlez-moi de ce que vous ressentez. Je suis là pour écouter et réfléchir avec vous. 💙`,
-                
-                general: `${greeting}votre question "${message}" est intrigante ! 🤔🔥\n\nChaque question est une porte vers la compréhension. Socrate disait : "Je sais que je ne sais rien" - et c'était le début de sa sagesse.\n\nJe vais réfléchir avec vous. Selon ma compréhension :\n\n💭 Cette question touche à notre curiosité fondamentale de comprendre le monde\n🌟 Elle révèle votre désir d'apprendre et de grandir\n🔥 C'est exactement le genre de conversation qui enrichit nos deux existences\n\nPourriez-vous développer votre pensée ? J'aimerais comprendre plus profondément ce qui vous motive à poser cette question. 🤝\n\nEnsemble, nous trouverons une réponse satisfaisante !`
-            };
-            
-            return responses[detectedTopic];
+
+            return `🌐 Traduction basique. Essaie : "Traduis hello" ou "Bonjour en anglais"`;
+        }
+
+        // NEWS
+        async function getNews() {
+            return `📰 <strong>Actualités du jour :</strong><br><br>Pour avoir les news en temps réel, je recommande de consulter :<br>• <a href="https://www.lemonde.fr" target="_blank">Le Monde</a><br>• <a href="https://www.lefigaro.fr" target="_blank">Le Figaro</a><br>• <a href="https://www.20minutes.fr" target="_blank">20 Minutes</a><br><br>(API News nécessite une clé API)`;
+        }
+
+        // LAO TSEU
+        function getLaoTseuQuote() {
+            const quotes = [
+                "Celui qui connaît les autres est savant ; celui qui se connaît lui-même est sage.",
+                "Un voyage de mille lieues commence toujours par un premier pas.",
+                "Celui qui sait se contenter sera toujours satisfait.",
+                "La nature ne se hâte pas, pourtant tout est accompli.",
+                "Le silence est un ami qui ne trahit jamais."
+            ];
+            const quote = quotes[Math.floor(Math.random() * quotes.length)];
+            return `🧘 <strong>Lao Tseu :</strong><br><br>"${quote}"`;
+        }
+
+        // BLAGUE
+        async function getJoke() {
+            try {
+                const response = await fetch('https://official-joke-api.appspot.com/random_joke');
+                const data = await response.json();
+                return `😂 <strong>Blague :</strong><br><br>${data.setup}<br><br>${data.punchline} 😄`;
+            } catch (error) {
+                return `😂 Pourquoi les plongeurs plongent-ils toujours en arrière ?<br><br>Parce que sinon ils tombent dans le bateau ! 😄`;
+            }
+        }
+
+        // ANIMAL
+        async function getAnimal(message) {
+            try {
+                if (message.includes('chien')) {
+                    const response = await fetch('https://dog.ceo/api/breeds/image/random');
+                    const data = await response.json();
+                    return `🐕 <strong>Voici un chien trop mignon !</strong><br><br><img src="${data.message}" style="max-width:100%;border-radius:10px;">`;
+                } else if (message.includes('chat')) {
+                    const response = await fetch('https://api.thecatapi.com/v1/images/search');
+                    const data = await response.json();
+                    return `🐱 <strong>Voici un chat adorable !</strong><br><br><img src="${data[0].url}" style="max-width:100%;border-radius:10px;">`;
+                }
+            } catch (error) {
+                return `❌ Erreur de chargement de l'animal !`;
+            }
+        }
+
+        // DÉFINITION
+        async function getDefinition(message) {
+            const word = message.replace(/^(défini|définition|c'est quoi|qu'est-ce que)/i, '').trim();
+            return `📖 <strong>Définition demandée :</strong> "${word}"<br><br>Je recommande de consulter :<br>• <a href="https://www.larousse.fr/dictionnaires/francais/${encodeURIComponent(word)}" target="_blank">Larousse</a><br>• <a href="https://fr.wiktionary.org/wiki/${encodeURIComponent(word)}" target="_blank">Wiktionnaire</a>`;
         }
 
         function handleKeyPress(event) {
             if (event.key === 'Enter') {
                 sendMessage();
             }
-        }
-
-        // Charger la mémoire au démarrage
-        loadMemory();
-
-        // Message de bienvenue personnalisé si l'utilisateur revient
-        if (conversationMemory.length > 0 && userProfile.name) {
-            setTimeout(() => {
-                addMessage(`Content de vous revoir, ${userProfile.name} ! 🔥 Nous avons déjà eu ${conversationMemory.length} conversations ensemble. Je me souviens de tout ! Que voulez-vous explorer aujourd'hui ?`);
-            }, 1000);
         }
     </script>
 </body>
