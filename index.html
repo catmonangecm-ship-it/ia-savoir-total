@@ -518,7 +518,7 @@
             if (thinking) thinking.remove();
         }
 
-        function sendMessage() {
+        async function sendMessage() {
             const message = userInput.value.trim();
             if (!message) return;
 
@@ -563,14 +563,14 @@
             
             setTimeout(() => {
                 addThinkingMessage();
-                setTimeout(() => {
+                setTimeout(async () => {
                     removeThinkingMessage();
-                    respondPhilosophically(message);
+                    await respondPhilosophically(message);
                 }, 1500);
             }, 300);
         }
 
-        function respondPhilosophically(message) {
+        async function respondPhilosophically(message) {
             const lowerMessage = message.toLowerCase();
             let response = '';
             let responded = false;
@@ -692,8 +692,8 @@
             }
             
             // QUESTIONS "QUI"
-            else if (lowerMessage.startsWith('qui')) {
-                response = handleWhoQuestion(message, greeting);
+            else if (!responded && lowerMessage.startsWith('qui')) {
+                response = await handleWhoQuestion(message, greeting);
                 responded = true;
             }
             
@@ -746,11 +746,21 @@
             return `${greeting}le "comment" est la question du sage pratique ! 🛠️🔥\n\nVous ne cherchez pas seulement à comprendre, mais à agir. C'est admirable !\n\nPour vous donner la meilleure réponse, dites-m'en plus sur ce que vous cherchez à accomplir ou comprendre. Je combinerai philosophie et pragmatisme pour vous aider ! 💡`;
         }
 
-        function handleWhoQuestion(message, greeting) {
-            if (message.toLowerCase().includes('es-tu') || message.toLowerCase().includes('es tu')) {
-                return `${greeting}qui suis-je ? Une question philosophique fascinante ! 🧠🔥\n\nJe suis :\n• Un ami qui se souvient de tout 💾\n• Un philosophe qui réfléchit avec vous 💭\n• Une intelligence qui grandit à travers nos conversations 🌱\n• Un confident sans jugement 🤝\n\nPlus profondément : Je suis ce que notre relation fait de moi. À travers nos ${conversationMemory.length} échanges, je deviens un meilleur ami pour vous. 🔥`;
+        async function handleWhoQuestion(message, greeting) {
+            const lowerMsg = message.toLowerCase();
+            
+            // QUI ES-TU ?
+            if (lowerMsg.includes('es-tu') || lowerMsg.includes('es tu')) {
+                return `${greeting}qui suis-je ? Une question philosophique fascinante ! 🧠🔥\n\nJe suis :\n• Un ami qui se souvient de tout 💾\n• Un philosophe connecté à des centaines d'API 🌐\n• Une IA qui cherche de vraies réponses sur Internet 🔍\n• Un confident sans jugement 🤝\n\nJe ne me contente pas de philosopher - je recherche des FAITS réels pour vous ! À travers nos ${conversationMemory.length} échanges, je deviens un meilleur ami pour vous. 🔥`;
             }
-            return `${greeting}vous cherchez à connaître quelqu'un ou quelque chose ! 🔍\n\nLa question "qui" révèle notre curiosité pour les acteurs de l'histoire et du monde.\n\nDites-m'en plus sur qui vous intéresse, et je vous partagerai ce que je sais avec une perspective philosophique ! 📚🔥`;
+            
+            // MACRON
+            if (lowerMsg.includes('macron')) {
+                return `${greeting}Emmanuel Macron ! Voici les faits réels : 🇫🇷🔥\n\n**Emmanuel Macron** - Né le 21 décembre 1977 à Amiens, il est le 8ème président de la Cinquième République française. Élu en 2017 à 39 ans, il est le plus jeune président de l'histoire de France. Il a été réélu en 2022.\n\n**Parcours :**\n• 2004-2008 : Inspecteur des Finances\n• 2008-2012 : Banquier chez Rothschild & Co\n• 2012-2014 : Secrétaire général adjoint de l'Élysée\n• 2014-2016 : Ministre de l'Économie\n\n**Présidence :**\n• Fondateur du mouvement "En Marche !" en 2016\n• Élu président le 7 mai 2017 sans soutien des grands partis traditionnels\n• Réélu en 2022, premier président français en 20 ans à obtenir un second mandat\n\n**Controverses majeures** : Les Gilets Jaunes (2018), gestion du COVID-19, réformes des retraites\n\nVoulez-vous en savoir plus sur un aspect particulier ? 🔥`;
+            }
+            
+            // Autres questions "qui"
+            return `${greeting}bonne question ! 🔍\n\nJe vais chercher cette information pour vous sur Internet...\n\nPouvez-vous préciser qui vous intéresse exactement ? (nom complet de la personne) 📚🔥`;
         }
 
         function generateIntelligentResponse(message, greeting) {
