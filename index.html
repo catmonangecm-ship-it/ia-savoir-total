@@ -255,291 +255,32 @@
         async function sendMessage() {
             const message = userInput.value.trim();
             if (!message) return;
-            
+
             addMessage(message, true);
-            conversationHistory.push({user: message});
             userInput.value = '';
-            
+
             addThinkingMessage();
-            
-            setTimeout(async () => {
-                const response = await getSmartResponse(message);
-                removeThinkingMessage();
-                addMessage(response);
-                conversationHistory.push({bot: response});
-            }, 800);
-        }
 
-        async function getSmartResponse(message) {
-            const lowerMsg = message.toLowerCase();
-
-            // CALCULS
-            if (lowerMsg.match(/(\d+)\s*(plus|\+|et)\s*(\d+)/) || lowerMsg.match(/(\d+)\s*(moins|-)\s*(\d+)/) || 
-                lowerMsg.match(/(\d+)\s*(fois|\*|×|multiplié)\s*(\d+)/) || lowerMsg.match(/(\d+)\s*(divisé|\/|÷)\s*(\d+)/)) {
-                return calculateMath(message);
-            }
-
-            // WIKIPEDIA - Personnalités
-            if (lowerMsg.startsWith('qui est') || lowerMsg.startsWith('qui a') || lowerMsg.startsWith('c\'est qui')) {
-                return await searchWikipedia(message);
-            }
-
-            // HEURE
-            if (lowerMsg.includes('heure') || lowerMsg.includes('temps') || lowerMsg.match(/^(il est|quelle)/)) {
-                return getTime();
-            }
-
-            // SALUTATIONS
-            if (lowerMsg.match(/^(bonjour|salut|hey|hello|coucou|bonsoir|hi)$/)) {
-                return `Hey ! 👋🔥 Content de te voir ! Pose-moi n'importe quelle question, j'ai des réponses RÉELLES pour tout !`;
-            }
-
-            // AU REVOIR
-            if (lowerMsg.match(/^(au revoir|bye|adieu|à plus|ciao|bb)$/)) {
-                return `Salut ! 👋🔥 À bientôt !`;
-            }
-
-            // MÉTÉO
-            if (lowerMsg.includes('météo') || lowerMsg.includes('meteo') || lowerMsg.includes('temps qu\'il fait')) {
-                return await getWeather(message);
-            }
-
-            // TRADUCTION
-            if (lowerMsg.includes('traduis') || lowerMsg.includes('traduire') || lowerMsg.includes('en anglais') || lowerMsg.includes('en français')) {
-                return await translateText(message);
-            }
-
-            // NEWS
-            if (lowerMsg.includes('actualité') || lowerMsg.includes('actualites') || lowerMsg.includes('news') || lowerMsg.includes('info du jour')) {
-                return await getNews();
-            }
-
-            // CITATION LAO TSEU
-            if (lowerMsg.includes('lao') || lowerMsg.includes('tseu') || lowerMsg.includes('citation sage')) {
-                return getLaoTseuQuote();
-            }
-
-            // BLAGUE
-            if (lowerMsg.includes('blague') || lowerMsg.includes('joke') || lowerMsg.includes('fais moi rire')) {
-                return await getJoke();
-            }
-
-            // ANIMAL
-            if (lowerMsg.includes('chien') || lowerMsg.includes('chat') || lowerMsg.includes('animal')) {
-                return await getAnimal(lowerMsg);
-            }
-
-            // DÉFINITION
-            if (lowerMsg.startsWith('défini') || lowerMsg.includes('c\'est quoi') || lowerMsg.includes('définition')) {
-                return await getDefinition(message);
-            }
-
-            // RÉPONSE PAR DÉFAUT INTELLIGENTE
-            return await searchWikipedia(message);
-        }
-
-        // CALCULS MATHÉMATIQUES
-        function calculateMath(message) {
             try {
-                let result;
-                const plusMatch = message.match(/(\d+)\s*(?:plus|\+|et)\s*(\d+)/i);
-                const moinsMatch = message.match(/(\d+)\s*(?:moins|-)\s*(\d+)/i);
-                const foisMatch = message.match(/(\d+)\s*(?:fois|\*|×|multiplié)\s*(\d+)/i);
-                const diviseMatch = message.match(/(\d+)\s*(?:divisé|\/|÷)\s*(\d+)/i);
+                const response = await fetch('http://localhost:3000/api/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message })
+                });
 
-                if (plusMatch) {
-                    result = parseInt(plusMatch[1]) + parseInt(plusMatch[2]);
-                    return `🔢 <strong>Calcul :</strong> ${plusMatch[1]} + ${plusMatch[2]} = <strong>${result}</strong> ✅`;
-                }
-                if (moinsMatch) {
-                    result = parseInt(moinsMatch[1]) - parseInt(moinsMatch[2]);
-                    return `🔢 <strong>Calcul :</strong> ${moinsMatch[1]} - ${moinsMatch[2]} = <strong>${result}</strong> ✅`;
-                }
-                if (foisMatch) {
-                    result = parseInt(foisMatch[1]) * parseInt(foisMatch[2]);
-                    return `🔢 <strong>Calcul :</strong> ${foisMatch[1]} × ${foisMatch[2]} = <strong>${result}</strong> ✅`;
-                }
-                if (diviseMatch) {
-                    result = parseInt(diviseMatch[1]) / parseInt(diviseMatch[2]);
-                    return `🔢 <strong>Calcul :</strong> ${diviseMatch[1]} ÷ ${diviseMatch[2]} = <strong>${result.toFixed(2)}</strong> ✅`;
-                }
-            } catch (e) {
-                return `❌ Erreur de calcul. Essaie : "4 plus 5" ou "10 fois 3"`;
-            }
-        }
-
-        // WIKIPEDIA
-        async function searchWikipedia(query) {
-            try {
-                // Extraire le sujet
-                let subject = query.replace(/^(qui est|qui a|c'est qui|qui était)/i, '').trim();
-                if (!subject) subject = query;
-
-                // API Wikipedia FR
-                const searchUrl = `https://fr.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(subject)}`;
-                
-                const response = await fetch(searchUrl);
-                
-                if (response.ok) {
-                    const data = await response.json();
-                    return `📚 <strong>${data.title}</strong><br><br>${data.extract}<br><br>🔗 <a href="${data.content_urls.desktop.page}" target="_blank">Lire plus sur Wikipedia</a>`;
-                } else {
-                    // Si pas trouvé, chercher
-                    const searchApiUrl = `https://fr.wikipedia.org/w/api.php?action=opensearch&format=json&search=${encodeURIComponent(subject)}&limit=1&origin=*`;
-                    const searchResp = await fetch(searchApiUrl);
-                    const searchData = await searchResp.json();
-                    
-                    if (searchData[1] && searchData[1].length > 0) {
-                        const title = searchData[1][0];
-                        const desc = searchData[2][0];
-                        const url = searchData[3][0];
-                        return `📚 <strong>${title}</strong><br><br>${desc}<br><br>🔗 <a href="${url}" target="_blank">Lire sur Wikipedia</a>`;
-                    }
-                }
-                
-                return `❌ Désolé, je n'ai pas trouvé "${subject}" sur Wikipedia. Essaie de reformuler !`;
-            } catch (error) {
-                return `❌ Erreur de connexion à Wikipedia. Réessaie !`;
-            }
-        }
-
-        // HEURE
-        function getTime() {
-            const now = new Date();
-            const time = now.toLocaleTimeString('fr-FR');
-            const date = now.toLocaleDateString('fr-FR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-            return `⏰ <strong>Il est ${time}</strong><br>📅 ${date}`;
-        }
-
-        // MÉTÉO
-        async function getWeather(message) {
-            try {
-                // Extraire la ville
-                const cityMatch = message.match(/(?:à|a)\s+([a-zéèêàâ\s]+)/i);
-                const city = cityMatch ? cityMatch[1].trim() : 'Paris';
-
-                // API Open-Meteo (gratuite, sans clé)
-                const geoUrl = `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(city)}&count=1&language=fr&format=json`;
-                const geoResp = await fetch(geoUrl);
-                const geoData = await geoResp.json();
-
-                if (geoData.results && geoData.results.length > 0) {
-                    const lat = geoData.results[0].latitude;
-                    const lon = geoData.results[0].longitude;
-                    const cityName = geoData.results[0].name;
-
-                    const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&timezone=auto`;
-                    const weatherResp = await fetch(weatherUrl);
-                    const weatherData = await weatherResp.json();
-
-                    const temp = weatherData.current_weather.temperature;
-                    const windSpeed = weatherData.current_weather.windspeed;
-                    const weatherCode = weatherData.current_weather.weathercode;
-
-                    const conditions = {
-                        0: '☀️ Ciel dégagé',
-                        1: '🌤️ Peu nuageux',
-                        2: '⛅ Partiellement nuageux',
-                        3: '☁️ Nuageux',
-                        45: '🌫️ Brouillard',
-                        48: '🌫️ Brouillard givrant',
-                        51: '🌧️ Bruine légère',
-                        61: '🌧️ Pluie légère',
-                        80: '🌧️ Averses'
-                    };
-
-                    const condition = conditions[weatherCode] || '🌤️ Temps variable';
-
-                    return `🌤️ <strong>Météo à ${cityName}</strong><br><br>🌡️ Température : <strong>${temp}°C</strong><br>💨 Vent : ${windSpeed} km/h<br>${condition}`;
+                if (!response.ok) {
+                    throw new Error('Erreur serveur');
                 }
 
-                return `❌ Ville "${city}" non trouvée. Essaie "Météo à Paris"`;
-            } catch (error) {
-                return `❌ Impossible de récupérer la météo. Réessaie !`;
-            }
-        }
-
-        // TRADUCTION
-        async function translateText(message) {
-            // Détection basique
-            const translationMap = {
-                'hello': 'bonjour',
-                'goodbye': 'au revoir',
-                'thank you': 'merci',
-                'yes': 'oui',
-                'no': 'non',
-                'love': 'amour',
-                'friend': 'ami',
-                'water': 'eau',
-                'food': 'nourriture',
-                'house': 'maison',
-                'bonjour': 'hello',
-                'au revoir': 'goodbye',
-                'merci': 'thank you',
-                'oui': 'yes',
-                'non': 'no'
-            };
-
-            for (let [key, value] of Object.entries(translationMap)) {
-                if (message.toLowerCase().includes(key)) {
-                    return `🌐 <strong>Traduction :</strong><br>"${key}" → "<strong>${value}</strong>" ✅`;
-                }
-            }
-
-            return `🌐 Traduction basique. Essaie : "Traduis hello" ou "Bonjour en anglais"`;
-        }
-
-        // NEWS
-        async function getNews() {
-            return `📰 <strong>Actualités du jour :</strong><br><br>Pour avoir les news en temps réel, je recommande de consulter :<br>• <a href="https://www.lemonde.fr" target="_blank">Le Monde</a><br>• <a href="https://www.lefigaro.fr" target="_blank">Le Figaro</a><br>• <a href="https://www.20minutes.fr" target="_blank">20 Minutes</a><br><br>(API News nécessite une clé API)`;
-        }
-
-        // LAO TSEU
-        function getLaoTseuQuote() {
-            const quotes = [
-                "Celui qui connaît les autres est savant ; celui qui se connaît lui-même est sage.",
-                "Un voyage de mille lieues commence toujours par un premier pas.",
-                "Celui qui sait se contenter sera toujours satisfait.",
-                "La nature ne se hâte pas, pourtant tout est accompli.",
-                "Le silence est un ami qui ne trahit jamais."
-            ];
-            const quote = quotes[Math.floor(Math.random() * quotes.length)];
-            return `🧘 <strong>Lao Tseu :</strong><br><br>"${quote}"`;
-        }
-
-        // BLAGUE
-        async function getJoke() {
-            try {
-                const response = await fetch('https://official-joke-api.appspot.com/random_joke');
                 const data = await response.json();
-                return `😂 <strong>Blague :</strong><br><br>${data.setup}<br><br>${data.punchline} 😄`;
+                removeThinkingMessage();
+                addMessage(data.message);
             } catch (error) {
-                return `😂 Pourquoi les plongeurs plongent-ils toujours en arrière ?<br><br>Parce que sinon ils tombent dans le bateau ! 😄`;
+                removeThinkingMessage();
+                addMessage(`❌ Erreur de connexion au serveur. Assurez-vous que le serveur est démarré sur http://localhost:3000`);
             }
         }
 
-        // ANIMAL
-        async function getAnimal(message) {
-            try {
-                if (message.includes('chien')) {
-                    const response = await fetch('https://dog.ceo/api/breeds/image/random');
-                    const data = await response.json();
-                    return `🐕 <strong>Voici un chien trop mignon !</strong><br><br><img src="${data.message}" style="max-width:100%;border-radius:10px;">`;
-                } else if (message.includes('chat')) {
-                    const response = await fetch('https://api.thecatapi.com/v1/images/search');
-                    const data = await response.json();
-                    return `🐱 <strong>Voici un chat adorable !</strong><br><br><img src="${data[0].url}" style="max-width:100%;border-radius:10px;">`;
-                }
-            } catch (error) {
-                return `❌ Erreur de chargement de l'animal !`;
-            }
-        }
-
-        // DÉFINITION
-        async function getDefinition(message) {
-            const word = message.replace(/^(défini|définition|c'est quoi|qu'est-ce que)/i, '').trim();
-            return `📖 <strong>Définition demandée :</strong> "${word}"<br><br>Je recommande de consulter :<br>• <a href="https://www.larousse.fr/dictionnaires/francais/${encodeURIComponent(word)}" target="_blank">Larousse</a><br>• <a href="https://fr.wiktionary.org/wiki/${encodeURIComponent(word)}" target="_blank">Wiktionnaire</a>`;
-        }
 
         function handleKeyPress(event) {
             if (event.key === 'Enter') {
