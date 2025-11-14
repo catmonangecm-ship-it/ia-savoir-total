@@ -189,12 +189,31 @@
             <h1>🧠 Bot IA Ultra Intelligent 🔥</h1>
             <p>Connecté à Wikipedia, Météo, News, Calculs, Traduction et + de 1000 API</p>
             <span class="stats">✅ Réponses RÉELLES avec sources vérifiées</span>
+            <button id="settingsBtn" style="position: absolute; top: 20px; right: 20px; background: rgba(255,255,255,0.3); border: none; color: white; padding: 8px 16px; border-radius: 15px; cursor: pointer; font-weight: 700;">⚙️ Paramètres</button>
+        </div>
+
+        <!-- Modal pour la clé API -->
+        <div id="apiModal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.7); z-index: 1000; display: flex; align-items: center; justify-content: center;">
+            <div style="background: white; padding: 30px; border-radius: 15px; max-width: 500px; box-shadow: 0 10px 40px rgba(0,0,0,0.3);">
+                <h2 style="color: #ff4757; margin-bottom: 15px;">🔑 Configuration API Claude</h2>
+                <p style="color: #666; margin-bottom: 15px;">Entrez votre clé API Anthropic pour utiliser le bot IA.</p>
+                <input type="password" id="apiInput" placeholder="sk-ant-..." style="width: 100%; padding: 12px; border: 2px solid #ff6b35; border-radius: 8px; font-size: 14px; margin-bottom: 15px;">
+                <small style="color: #999; display: block; margin-bottom: 15px;">💡 Obtenez une clé API gratuite: <a href="https://console.anthropic.com" target="_blank" style="color: #ff4757;">console.anthropic.com</a></small>
+                <div style="display: flex; gap: 10px;">
+                    <button onclick="saveApiKey()" style="flex: 1; padding: 12px; background: linear-gradient(135deg, #ff4757 0%, #ff6348 100%); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 700;">Sauvegarder</button>
+                    <button onclick="closeApiModal()" style="flex: 1; padding: 12px; background: #e0e0e0; color: #333; border: none; border-radius: 8px; cursor: pointer; font-weight: 700;">Annuler</button>
+                </div>
+                <div id="apiStatus" style="margin-top: 15px; padding: 10px; border-radius: 8px; display: none;"></div>
+            </div>
         </div>
 
         <div class="chat-box" id="chatBox">
             <div class="message bot">
                 <div class="message-content">
                     Salut ! 🔥 Je suis ton assistant IA ULTRA INTELLIGENT !
+                    <br><br>
+                    ⚠️ <strong>ÉTAPE 1:</strong> Cliquez sur ⚙️ Paramètres pour ajouter votre clé API Claude
+                    <br>📝 Obtenez une clé API gratuite sur: <a href="https://console.anthropic.com" target="_blank" style="color: #ff8c42; text-decoration: underline;">console.anthropic.com</a>
                     <br><br>
                     ✅ Je réponds avec des FAITS RÉELS (pas de philosophie inutile)
                     <br>✅ Connecté à Wikipedia, Météo, News, Calculs, Traduction
@@ -208,7 +227,7 @@
                     <br>• "Traduis hello en français"
                     <br>• "Actualités du jour"
                     <br><br>
-                    Pose-moi NIMPORTE QUOI ! 🚀
+                    Pose-moi N'IMPORTE QUOI ! 🚀
                 </div>
             </div>
         </div>
@@ -222,17 +241,63 @@
     <script>
         const chatBox = document.getElementById('chatBox');
         const userInput = document.getElementById('userInput');
+        const apiModal = document.getElementById('apiModal');
+        const apiInput = document.getElementById('apiInput');
+        const settingsBtn = document.getElementById('settingsBtn');
 
         let conversationHistory = [];
+        let apiKey = localStorage.getItem('anthropic_api_key') || '';
 
+        // === GESTION DE LA CLÉ API ===
+        function openApiModal() {
+            apiModal.style.display = 'flex';
+            apiInput.value = apiKey;
+            apiInput.focus();
+        }
+
+        function closeApiModal() {
+            apiModal.style.display = 'none';
+        }
+
+        function saveApiKey() {
+            const newKey = apiInput.value.trim();
+            if (!newKey) {
+                showApiStatus('Veuillez entrer une clé API', 'error');
+                return;
+            }
+            apiKey = newKey;
+            localStorage.setItem('anthropic_api_key', apiKey);
+            showApiStatus('✅ Clé API sauvegardée avec succès!', 'success');
+            setTimeout(() => {
+                closeApiModal();
+                addMessage('✅ Clé API configurée! Vous pouvez maintenant poser vos questions.');
+            }, 1000);
+        }
+
+        function showApiStatus(message, type) {
+            const statusDiv = document.getElementById('apiStatus');
+            statusDiv.textContent = message;
+            statusDiv.style.display = 'block';
+            statusDiv.style.background = type === 'error' ? '#ffebee' : '#e8f5e9';
+            statusDiv.style.color = type === 'error' ? '#c62828' : '#2e7d32';
+            statusDiv.style.border = `2px solid ${type === 'error' ? '#ef5350' : '#66bb6a'}`;
+        }
+
+        // Event listeners
+        settingsBtn.addEventListener('click', openApiModal);
+        apiInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') saveApiKey();
+        });
+
+        // === MESSAGES ===
         function addMessage(content, isUser = false) {
             const messageDiv = document.createElement('div');
             messageDiv.className = `message ${isUser ? 'user' : 'bot'}`;
-            
+
             const contentDiv = document.createElement('div');
             contentDiv.className = 'message-content';
             contentDiv.innerHTML = content;
-            
+
             messageDiv.appendChild(contentDiv);
             chatBox.appendChild(messageDiv);
             chatBox.scrollTop = chatBox.scrollHeight;
@@ -256,6 +321,11 @@
             const message = userInput.value.trim();
             if (!message) return;
 
+            if (!apiKey) {
+                addMessage('❌ Veuillez d\'abord configurer votre clé API (cliquez sur ⚙️ Paramètres)');
+                return;
+            }
+
             addMessage(message, true);
             userInput.value = '';
 
@@ -265,11 +335,12 @@
                 const response = await fetch('http://localhost:3000/api/chat', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ message })
+                    body: JSON.stringify({ message, apiKey })
                 });
 
                 if (!response.ok) {
-                    throw new Error('Erreur serveur');
+                    const errorData = await response.json();
+                    throw new Error(errorData.error || 'Erreur serveur');
                 }
 
                 const data = await response.json();
@@ -277,7 +348,7 @@
                 addMessage(data.message);
             } catch (error) {
                 removeThinkingMessage();
-                addMessage(`❌ Erreur de connexion au serveur. Assurez-vous que le serveur est démarré sur http://localhost:3000`);
+                addMessage(`❌ Erreur: ${error.message}. Vérifiez votre clé API et que le serveur est démarré.`);
             }
         }
 
@@ -287,6 +358,13 @@
                 sendMessage();
             }
         }
+
+        // === INITIALISATION ===
+        document.addEventListener('DOMContentLoaded', () => {
+            if (apiKey) {
+                addMessage('✅ Clé API détectée. Vous pouvez commencer à poser des questions!');
+            }
+        });
     </script>
 </body>
 </html>

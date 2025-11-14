@@ -24,6 +24,13 @@ const client = new Anthropic({
 // Context de conversation
 const conversationHistory = new Map();
 
+// === API KEY VALIDATION ===
+function getClientFromKey(apiKey) {
+  return new Anthropic({
+    apiKey: apiKey
+  });
+}
+
 // === UTILITAIRES POUR RÉCUPÉRER DES DONNÉES RÉELLES ===
 
 async function getWeatherData(city = 'Paris') {
@@ -89,10 +96,14 @@ async function getJokeData() {
 
 app.post('/api/chat', async (req, res) => {
   try {
-    const { message, sessionId = 'default' } = req.body;
+    const { message, sessionId = 'default', apiKey } = req.body;
 
     if (!message || !message.trim()) {
       return res.status(400).json({ error: 'Message vide' });
+    }
+
+    if (!apiKey) {
+      return res.status(401).json({ error: 'Clé API manquante' });
     }
 
     // Récupérer l'historique de cette session
@@ -131,8 +142,11 @@ app.post('/api/chat', async (req, res) => {
       content: message + contextData
     });
 
+    // Créer un client avec la clé fournie
+    const clientWithKey = getClientFromKey(apiKey);
+
     // Appeler Claude
-    const response = await client.messages.create({
+    const response = await clientWithKey.messages.create({
       model: 'claude-opus-4-1-20250805',
       max_tokens: 1024,
       system: `Tu es un assistant IA ultra-intelligent qui a réponse à TOUT.
